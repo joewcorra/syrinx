@@ -17,6 +17,7 @@ This internal R package provides harmonization, cleaning, and QA/QC tools for st
 ```r
 # From local development
 devtools::load_all("path/to/data-harmonize")
+```
 
 ## Repository Structure
 
@@ -32,9 +33,11 @@ data-harmonize/
 └── README.md
 
 ## Dependencies
+
 `assertr`, `validate`, `tidyverse`, `ellmer`
 
 ## Contribution
+
 If you’re proposing changes to harmonization logic, please include:
 
 Example before/after harmonized values
