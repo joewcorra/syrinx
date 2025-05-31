@@ -18,6 +18,19 @@ This internal R package provides harmonization, cleaning, and QA/QC tools for st
 # From local development
 devtools::load_all("path/to/data-harmonize")
 
+## Repository Structure
+
+data-harmonize/
+├── R/
+│   ├── harmonize.R
+│   ├── metadata_helpers.R
+│   └── qa_qc.R
+├── inst/metadata/
+│   ├── variables.csv
+│   └── values.csv
+├── DESCRIPTION
+└── README.md
+
 ## Dependencies
 `assertr`, `validate`, `tidyverse`, `ellmer`
 
