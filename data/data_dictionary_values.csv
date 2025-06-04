@@ -1,0 +1,704 @@
+value_variable,value,value_description
+carbon_pool,aboveground biomass,
+carbon_pool,aboveground live biomass,
+carbon_pool,belowground biomass,
+carbon_pool,belowground live biomass,
+carbon_pool,biomass c flux,
+carbon_pool,ch4 flux,
+carbon_pool,dead organic matter c flux,
+carbon_pool,dead wood,
+carbon_pool,drained organic soils,
+carbon_pool,litter,
+carbon_pool,mineral,
+carbon_pool,mineral soil,
+carbon_pool,n2o flux,
+carbon_pool,organic,
+carbon_pool,organic soil,
+carbon_pool,soil c flux,
+category,enteric fermentation,
+category,field burning of agricultural residues,
+category,manure management,
+category,rice cultivation,
+category,commercial,
+category,electricity generation,
+category,residential,
+category,incineration,
+category,transportation,
+category,us territories,
+category,domestic,
+category,industrial,
+category,external source,
+category,semiconductor manufacture,
+category,photovoltaics,
+category,micro-electro-mechanical devices,
+category,abandoned coal mines,
+category,coal mining,
+category,wetlands remaining wetlands,
+category,land converted to wetlands,
+category,electrical equipment,
+category,n2o from product uses,
+category,sf6 and pfcs from other product use,
+category,settlements remaining settlements,
+category,land converted to settlements,
+category,liming,
+category,urea fertilization,
+category,cropland remaining cropland,
+category,land converted to cropland,
+category,grassland remaining grassland,
+category,land converted to grassland,
+category,forest land remaining forest land,
+category,land converted to forest land,
+category,agricultural soil management,
+category,fluorochemical production,
+category,international bunker fuels,
+category,landfills,
+category,aluminum production,
+category,magnesium production,
+category,anaerobic digestion at biogas facilities,
+category,ferroalloy production,
+category,iron and steel production,
+category,lead production,
+category,zinc production,
+ghg,103217-80-7,(cf3)2-n-cf2cf2cf2cf3
+ghg,21703-45-7,[[difluoro(trifluoromethoxy)methoxy]difluoromethoxy]difluoro-acetyl fluoride
+ghg,"[perfluoro compounds, c5-18]","[perfluoro compounds, c5-18]"
+ghg,"[perfluoro compounds, c5-18] - cas 86508-42-1","[perfluoro compounds, c5-18] - cas 86508-42-1"
+ghg,<octafluorotetramethy-lene>hydroxymethyl group,<octafluorotetramethy-lene>hydroxymethyl group
+ghg,"1,1,1,2,2,3,3,4,4-nonafluoro-4-methoxybutane","1,1,1,2,2,3,3,4,4-nonafluoro-4-methoxybutane"
+ghg,3330-15-2,"1,1,1,2,2,3,3-heptafluoro-3-(1,2,2,2-tetrafluoroethoxy)-propane"
+ghg,870778-34-0,"1,1,1,2,3,3-hexafluoro-4-(1,1,2,3,3,3-hexafluoropropoxy-pentane"
+ghg,"1,1,1,3,3,3-hexafluoropropane","1,1,1,3,3,3-hexafluoropropane"
+ghg,21703-49-1,"1,1,1,3,3,5,5,7,7,9,9,11,11-tridecafluoro-2,4,6,8,10-pentaoxadodecan-12-oyl fluoride"
+ghg,423-40-5,"1,1,2,2,3,3,3-heptafluoro-1-propanesulfonyl fluoride"
+ghg,30334-69-1,"1,1,2,2,3,3,4,4,4-nonafluoro-1-butanesulfonamide"
+ghg,132017-51-7,"1,2-oxathiane, 3,3,4,4,5,5,6,6-octafluoro-, 2,2-dioxide"
+ghg,84246-31-1,"1,4-butanedisulfonyl difluoride, 1,1,2,2,3,3,4,4-octafluoro-"
+ghg,34455-00-0,"1-butanesulfonamide, 1,1,2,2,3,3,4,4,4-nonafluoro-n,n-bis(2-hydroxyethyl)-"
+ghg,207297-51-6,"1-butanesulfonamide, 1,1,2,2,3,3,4,4,4-nonafluoro-n,n-dimethyl-"
+ghg,484024-67-1,"1-butanesulfonamide,1,1,2,2,3,3,4,4,4-nonafluoro-n-(2-hydroxyethyl)-,ammonia"
+ghg,13695-31-3,"1-butanol, 2,2,3,3,4,4,4-heptafluoro-, methacrylate"
+ghg,22052-86-4,"1-ethoxy-1,1,2,2,3,3,3-heptafluoropropane"
+ghg,380-34-7,"1-ethoxy-1,1,2,3,3,3-hexafluoropropane"
+ghg,"1h,10h-perfluorodecane","1h,10h-perfluorodecane"
+ghg,132-95-8,"1h,1h,6h,6h-perfluoro-1,6-hexanediol diacrylate"
+ghg,"1h,4h-perfluorobutane","1h,4h-perfluorobutane"
+ghg,"1h,6h-perfluorohexane","1h,6h-perfluorohexane"
+ghg,"1h,8h-perfluorooctane","1h,8h-perfluorooctane"
+ghg,1h-perfluorooctane,1h-perfluorooctane
+ghg,132-83-1,"1-octanesulfonamide, n-butyl-heptadecafluoro-n-(2-hydroxyethyl)"
+ghg,4151-50-2,"1-octanesulfonamide,n-ethyl-1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,8-heptadecafluoro-"
+ghg,1763-23-1,"1-octanesulfonicacid,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,8-heptadecafluoro-"
+ghg,1227250-20-5,"1-propanesulfonyl fluoride, 1,1,2,2,3,3-hexafluoro-3-(trifluoromethoxy)-"
+ghg,1644-11-7,2-(perfluoropropoxy)perfluoropropyl trifluorovinyl ether
+ghg,75-89-8,"2,2,2-trifluoroethanol"
+ghg,"2,2,3,3,3-pentafluoropropanol","2,2,3,3,3-pentafluoropropanol"
+ghg,375-01-9,"2,2,3,3,4,4,4-heptafluorobutan-1-ol"
+ghg,206867-84-7,"2,2,3,3,4-pentafluoro-4-(trifluoromethyl)-oxetane"
+ghg,76-37-9,"2,2,3,3-tetrafluoro-1-propanol"
+ghg,2062-98-8,"2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propanoyl fluoride"
+ghg,2927-83-5,"2,3,3,3-tetrafluoro-2-(trifluoromethoxy) propionyl fluoride"
+ghg,29261-33-4,"2,3,5,6-tetrafluoro-7,7,8,8-tetracyanoquinodimethane"
+ghg,756-12-7,"2-butanone,1,1,1,3,4,4,4-heptafluoro-3-(trifluoromethyl)-"
+ghg,3330-14-1,"2h-perfluoro(5-methyl-3,6-dioxanonane)"
+ghg,"2-pentene, 1,1,1,2,3,4,5,5,5","2-pentene, 1,1,1,2,3,4,5,5,5-nonafluoro-4-(trifluoromethyl)-"
+ghg,1017237-78-3,2-propenoic acid methyl(nonafluorobutyl)sulfonylamino ethyl ester
+ghg,382-22-9,"3,3,3-trifluoro-2-(trifluoromethyl)-propionyl fluoride"
+ghg,155142-69-1,"3,3-difluoropropanoic acid"
+ghg,3m hfe-7500,"3-ethoxy-1,1,1,2,3,4,4,5,5,6,6,6-dodecafluoro-2-trifluoromethyl-hexane (3mtm hfe-7500)"
+ghg,813-45-6,"3-hexanone,1,1,1,2,4,4,5,5,6,6,6-undecafluoro-2-(trifluoro"
+ghg,122531-27-5,"4-morpholinepropanoylfluoride,.alpha.,.beta.,.beta.,2,2,3,3,5,5,6,6-undecaf..."
+ghg,53780-34-0,"acetamide,n-[2,4-dimethyl-5-[[(trifluoromethyl)sulfonyl]amino]phenyl]-"
+ghg,999888-45-3,acid fluoride isomer
+ghg,54143-56-5,"benzamide,n-(2-piperidinylmethyl)-2,5-bis(2,2,2-trifluoroethoxy)-,acetate(...c19h24f6n2o5"
+ghg,biogenic carbon dioxide,biogenic carbon dioxide
+ghg,82113-65-3,bis(trifluoromethanesulfonyl)imide
+ghg,bis(trifluoromethyl)-methanol,bis(trifluoromethyl)-methanol
+ghg,181214-73-3,"butane, 1,1,1,2,3,4,4,4-octafluoro-2-methoxy-3-(trifluoromethyl)-"
+ghg,"butane, octafluoro-2,3-bis(trifluoromethyl)-","butane, octafluoro-2,3-bis(trifluoromethyl)-"
+ghg,86714-31-0,c11f25n
+ghg,3m #2-31-6,c12f23n
+ghg,14288-08-5,c12f25n
+ghg,109900-55-2,c14f27n
+ghg,102526-08-9,c3f5h2cof
+ghg,70411-21-1,c3f6hcof
+ghg,3m #2-32-3,c3f7-o-cf(cf3)cf=cf-o-c3f7
+ghg,55064-79-4,c4f9ocof
+ghg,355-79-3,c5f10o
+ghg,881176-15-4,c5f11ocof
+ghg,66840-50-4,c5f12o
+ghg,678-29-5,c5f13n
+ghg,375-84-8,c6f13cof
+ghg,131968-12-2,c6f15n
+ghg,c7f14,c7f14
+ghg,92978-07-9,c7f16o
+ghg,co2,carbon dioxide
+ghg,co2e,carbon dioxide equivalent
+ghg,353-50-4,carbonic difluoride
+ghg,103229-54-5,cf3-n-(cf2cf2cf3)2
+ghg,hfe-236ea2,desflurane (hfe-236ea2)
+ghg,5930-67-6,difluoro-propanedioyl difluoride
+ghg,ethyl perfluoroisobutyl ether,ethyl perfluoroisobutyl ether
+ghg,83071-23-2,"f-c(o)-cf2cf2cf2-so2f; 2,2,3,3,4,4,-hexafluoro-4-(fluorosufonyl)-butanoyl fluoride"
+ghg,338-83-0,fc-3283/fc-8270 (perfluorotripropylamine)
+ghg,382-28-5,fc-3284 (perfluoromethylmorpholine)
+ghg,1064698-37-8,fc-40/fc-43 (perfluorotributylamine (ptba))
+ghg,fc-77,fc-77
+ghg,1093615-61-2,fc-770 (perfluoroisopropylmorpholine)
+ghg,542-44-9,flunisolide
+ghg,2711-81-1,fluoroalkyl alcohol
+ghg,999888-23-1,fluoroalkylsulfonimide
+ghg,999888-06-6,"fluorochemical (corrosive,acid)"
+ghg,37338-48-0,fluorochemical adduct
+ghg,65545-80-4,fluorosurfactant
+ghg,ghg not found,ghg not found in dim_ghg
+ghg,hcfe-235da2,hcfe-235da2 (isoflurane)
+ghg,hcfo-1233zd(e),hcfo-1233zd(e)
+ghg,59426-77-6,heptafluoropropyl trifluoromethyl ether
+ghg,24270-62-0,heptafluorotetrahydrofuran
+ghg,82727-16-0,"hexafluoro-1,3-propanedisulfonyldifluoride"
+ghg,684-16-2,hexafluoroacetone
+ghg,hexafluorobenzene,hexafluorobenzene
+ghg,425-82-1,hexafluorooxetane
+ghg,hfp/hfpo,hexafluoropropylene (hfp) and hfpo oligomers
+ghg,60164-51-4,hexafluoropropylene epoxide
+ghg,428-59-1,hexafluoropropylene oxide
+ghg,hfc-1132a; vf2,hfc-1132a; vf2
+ghg,hfc-1141; vf,hfc-1141; vf
+ghg,hfc-1234ze(e),hfc-1234ze(e)
+ghg,hfc-125,hfc-125
+ghg,c2h2f4,hfc-134
+ghg,ch2fcf3,hfc-134a
+ghg,hfc-143,hfc-143
+ghg,hfc-143a,hfc-143a
+ghg,hfc-152,hfc-152
+ghg,hfc-152a,hfc-152a
+ghg,hfc-161,hfc-161
+ghg,hfc-227ca,hfc-227ca
+ghg,hfc-227ea,hfc-227ea
+ghg,ch2f2,hfc-23
+ghg,hfc-236cb,hfc-236cb
+ghg,hfc-236ea,hfc-236ea
+ghg,hfc-236fa,hfc-236fa
+ghg,hfc-245ca,hfc-245ca
+ghg,hfc-245cb,hfc-245cb
+ghg,hfc-245fa,hfc-245fa
+ghg,ch3f,hfc-32
+ghg,hfc-365mfc,hfc-365mfc
+ghg,hfc-41,hfc-41
+ghg,hfc-43-10mee,hfc-43-10mee
+ghg,hfe-125,hfe-125
+ghg,hfe-134,hfe-134
+ghg,hfe-143a,hfe-143a
+ghg,hfe-227ea,hfe-227ea
+ghg,hfe-236ca12,hfe-236ca12 (hg-10)
+ghg,hfe-236fa,hfe-236fa
+ghg,hfe-245cb2,hfe-245cb2
+ghg,hfe-245fa1,hfe-245fa1
+ghg,hfe-245fa2,hfe-245fa2
+ghg,hfe-254cb2,hfe-254cb2
+ghg,hfe-263fb2,hfe-263fb2
+ghg,hfe-329mcc2,hfe-329mcc2
+ghg,hfe-338mcf2,hfe-338mcf2
+ghg,hfe-338mmz1,hfe-338mmz1
+ghg,hg-01,hfe-338pcc13 (hg-01)
+ghg,hfe-347mcc3,hfe-347mcc3
+ghg,hfe-347mcf2,hfe-347mcf2
+ghg,hfe-347mmy1,hfe-347mmy1
+ghg,hfe-347mmz1,hfe-347mmz1 (sevoflurane)
+ghg,hfe-347pcf2,hfe-347pcf2
+ghg,hfe-356mec3,hfe-356mec3
+ghg,hfe-356mff2,hfe-356mff2
+ghg,hfe-356mm1,hfe-356mm1
+ghg,hfe-356pcc3,hfe-356pcc3
+ghg,hfe-356pcf2,hfe-356pcf2
+ghg,hfe-356pcf3,hfe-356pcf3
+ghg,hfe-365mcf3,hfe-365mcf3
+ghg,hfe-374pc2,hfe-374pc2
+ghg,hfe-43-10pccc (h-galden 1040x),hfe-43-10pccc (h-galden 1040x)
+ghg,"hfe-449sl, (hfe-7100) isomer blend","hfe-449sl, (hfe-7100) isomer blend"
+ghg,"hfe-569sf2, (hfe-7200) isomer blend","hfe-569sf2, (hfe-7200) isomer blend"
+ghg,hfe-7100,hfe-7100
+ghg,hfe-7200,hfe-7200
+ghg,hfe-72da,hfe-72da
+ghg,132182-92-4,"hfe-7300 (1,1,1,2,2,3,4,5,5,5-decafluoro-3-methoxy-4-trifluoromethyl-pentane)"
+ghg,297730-93-9,"hfe-7500 (3-ethoxy-1,1,1,2,3,4,4,5,5,6,6,6-dodecafluoro-2-trifluoromethyl-hexane)"
+ghg,hfo-1234yf,hfo-1234yf
+ghg,hfo-1234ze(e),hfo-1234ze(e)
+ghg,hfo-1336mzz(z),hfo-1336mzz(z)
+ghg,hfp trimer,hfp trimer
+ghg,no data-1,hydrofluorocarbon
+ghg,155716-01-1,"iodonium, diphenyl-alkyl derivatives hexafluoroantimonate"
+ghg,430-92-2,isobutyryl fluoride
+ghg,ch4,methane
+ghg,431-47-0,"methyl 2,2,2-trifluoroacetate"
+ghg,"methyl 2,2-difluoroacetate","methyl 2,2-difluoroacetate"
+ghg,680-05-7,methyl heptafluoroisobutyrate
+ghg,methyl nonafluoroisbutyl ether,methyl nonafluoroisbutyl ether
+ghg,378-75-6,methyl pentafluoropropionate
+ghg,"propanoic acid, 3-[1-[difluoro","methyl perfluoro(4,7-dioxa-5-methylnon-8-enoate)"
+ghg,"methyl perfluoro(5-methyl-4,7-dioxanon-8-enoate)","methyl perfluoro(5-methyl-4,7-dioxanon-8-enoate)"
+ghg,356-24-1,methyl perfluorobutyrate
+ghg,methyl perfluoroisobutyl ether,methyl perfluoroisobutyl ether
+ghg,356-69-4,methyl perfluoromethoxypropionate
+ghg,178233-65-3,methyl(nonafluorobutylethyl)methylhydrogen siloxane trimethylsiloxy te
+ghg,1704-69-4,"morpholine, 2,2,3,3,5,5,6,6-octafluoro-4-(heptafluoropropyl)-"
+ghg,34454-99-4,n-(2-hydroxyethyl)-perfluorobutylsulfonamide
+ghg,3m #2-33-3,nc12f24h3
+ghg,nf3,nitrogen trifluoride
+ghg,n2o,nitrous oxide
+ghg,31506-32-8,n-methyl perfluorooctyl sulfonamide
+ghg,375-73-5,nonafluoro-1-butanesulfonic acid
+ghg,novec 649,"novec 649/1230, fk 5-1-12, perfluoro(2-methyl-3-pentanone)"
+ghg,c4f8o,octafluorotetrahydrofuran
+ghg,231620-71-6,organic fluorochemical
+ghg,other <subpart l>,other <subpart l>
+ghg,other hfc,other hfc
+ghg,other pfc,other pfc
+ghg,214119-32-1,"oxetane, 2,2,3,4,4-pentafluoro-3-(trifluoromethyl)-"
+ghg,55716-11-5,pem
+ghg,665-16-7,pentafluoro(trifluoromethoxy)-ethane
+ghg,422-64-0,pentafluoropropanoic acid
+ghg,957209-18-6,pentafluorotetrahydro-methoxy-bis(tetrafluoro(trifluoromethyl)ethyl) f
+ghg,perfluoalkylromorpholines,perfluoalkylromorpholines
+ghg,3m #999888-45-1,perfluoro alkoxy acid fluoride
+ghg,perfluoro compds,perfluoro compds
+ghg,"perfluoro compounds, c5-18","perfluoro compounds, c5-18"
+ghg,86508-42-1,"perfluoro compounds, c-5-18"
+ghg,13252-13-6,perfluoro(2-methyl-3-oxahexanonic) acid
+ghg,perfluoro(methylcyclopropane),perfluoro(methylcyclopropane)
+ghg,88190-28-7,perfluoro[butanesulfonyl fluoride-4-vinyl ether]
+ghg,16090-14-5,perfluoro-2-(2-fluorosulfonylethoxy) propyl vinyl ether
+ghg,c4f6,"perfluorobuta-1,3-diene"
+ghg,375-72-4,perfluorobutanesulfonyl fluoride
+ghg,335-42-2,perfluorobutanoyl fluoride
+ghg,375-22-4,perfluorobutyric acid
+ghg,c-c4f8,perfluorocyclobutane
+ghg,perfluorocyclohexane,perfluorocyclohexane
+ghg,perfluorocyclopropane,perfluorocyclopropane
+ghg,perfluorodecalin,perfluorodecalin
+ghg,358-21-4,perfluorodiethyl ether
+ghg,14930-22-4,perfluorodiethylsulfone
+ghg,813-44-5,perfluorodiisopropyl ketone
+ghg,37-30-5,perfluorodimethyl sulfide - ci cas
+ghg,72971-96-1,perfluorodimethyl sulfone
+ghg,354-87-0,perfluoroethanesulfonyl fluoride
+ghg,10493-43-3,perfluoroethyl vinyl ether
+ghg,677-84-9,perfluoroisobutyric acid fluoride
+ghg,perfluoroisopropylmorpholine (3m fc-770),perfluoroisopropylmorpholine (3mtm fluorinerttm fc-770)
+ghg,1493-13-6,perfluoromethanesulfonic acid
+ghg,425-38-7,perfluoromethoxypropionyl fluoride
+ghg,422-61-7,perfluoropropionyl fluoride
+ghg,1623-05-8,perfluoropropyl vinyl ether
+ghg,42060-64-0,perfluorosulfolane
+ghg,174-61-9,perfluoro-tert-butanol
+ghg,perfluorotrialkylamines,perfluorotrialkylamines
+ghg,perfluorotributylamine (3m fc-43),"perfluorotributylamine (ptba, 3mtm fluorinerttm fc40/fc-43)"
+ghg,perfluorotripropylamine (3m fc-8270),perfluorotripropylamine (3mtm fluorinerttm fc-3283/fc-8270)
+ghg,c5f8,pfc c-1418 (octafluorocyclopentene)
+ghg,pfc/pfpes,pfc/pfpes
+ghg,pfc-1114; tfe,pfc-1114; tfe
+ghg,c2f6,pfc-116 (perfluoroethane)
+ghg,pfc-1216; dyneon hfp,pfc-1216; dyneon hfp
+ghg,cf4,pfc-14 (perfluoromethane)
+ghg,c3f8,pfc-218 (perfluoropropane)
+ghg,c4f10,pfc-3-1-10 (perfluorobutane)
+ghg,c5f12,pfc-4-1-12 (perfluoropentane)
+ghg,c6f14,"pfc-5-1-14 (perfluorohexane, fc 72)"
+ghg,c7f16,pfc-6-1-12 (perfluoroheptane)
+ghg,pfc-7-1-18,pfc-7-1-18
+ghg,pfc-9-1-18,pfc-9-1-18
+ghg,pfpmie,pfpmie
+ghg,pfpmie fraction (solvay ht-110),"pfpmie fraction, bp 110 c (solvay galdentm ht-110)"
+ghg,pfpmie fraction (solvay do2-ts),"pfpmie fraction, bp 165 c (solvay galdentm do2-ts)"
+ghg,pfpmie fraction (solvay ht-170),"pfpmie fraction, bp 170 c (solvay galdentm ht-170)"
+ghg,pfpmie fraction (solvay ht-200),"pfpmie fraction, bp 200 c (solvay galdentm ht-200)"
+ghg,1187-93-5,pmve; hfe-216
+ghg,68958-60-1,"poly(oxy-1,2-ethanediyl),.alpha.-[2-[ethyl[(1,1,2,2,3,3,4,4,5,5,6,6,7,7,7-pe..."
+ghg,114366-89-1,"poly[oxy(1,1,2,2-tetrafluoro-1,2-ethanediyl)],.alpha.-(difluorohydroxymethyl..."
+ghg,662-20-4,"propanamide, 2,3,3,3-tetrafluoro-2-(trifluoromethyl)-"
+ghg,40573-09-9,"propane,1,1,2,2,3,3-hexafluoro-1-[(1,2,2-trifluoroethenyl)oxy]-3-(trifluorom..."
+ghg,42532-60-5,"propanenitrile, 2,3,3,3-tetrafluoro-2-(trifluoromethyl)-"
+ghg,377-73-1,"propanoic acid, 2,2,3,3-tetrafluoro-3-(trifluoromethoxy)-"
+ghg,13140-34-6,"propanoic acid, 2,3,3,3-tetrafluoro-2-(1,1,2,2,3,3,3-heptafluoropropoxy)-, methyl ester"
+ghg,958445-44-8,"propanoicacid,2,2,3-trifluoro-3-[1,1,2,2,3,3-hexafluoro-3-(trifluoromethoxy"
+ghg,430-71-7,propanoyl fluoride
+ghg,663-74-1,"propanoyl fluoride, 2,2,3,3-tetrafluoro-"
+ghg,117516-16-2,"propanoyl fluoride, 2,3,3,3-tetrafluoro-2-[1,1,2,2,3,3,4,4-octafluoro-4-(fluorosulfonyl)butoxy]-"
+ghg,356-61-6,"propanoylfluoride,2,2,3,3-tetrafluoro-3-(1,1,2,2,3,3,3-heptafluoropropoxy)-"
+ghg,"propene, hexafluoro, dimer","propene, hexafluoro, dimer"
+ghg,sf6,sulfur hexafluoride
+ghg,76-05-1,trifluoroacetic acid
+ghg,407-25-0,trifluoroacetic anhydride
+ghg,354-34-7,trifluoroacetyl fluoride
+ghg,trifluoroethylene,trifluoroethylene
+ghg,358-23-6,trifluoromethanesulfonic acid anhydride
+ghg,335-05-7,trifluoromethanesulfonyl fluoride
+ghg,trifluoromethyl sulphur pentafluoride,trifluoromethyl sulphur pentafluoride
+ghg,unknown fc,unknown fc
+ghg,unknown sulfonated fluorochemical compounds,unknown sulfonated fluorochemical compounds
+ghg,unspecified mix of hfcs,unspecified mix of hfcs
+ghg,unspecified mix of hfcs and pfcs,unspecified mix of hfcs and pfcs
+ghg,unspecified mix of hfes,unspecified mix of hfes
+ghg,unspecified mix of pfcs,unspecified mix of pfcs
+ghg,unspecified mix of pfpmies,unspecified mix of pfpmies
+sector  ,agriculture,
+sector  ,industrial processes and product use                   ,
+sector  ,external source,
+sector  ,energy-excluded,
+sector  ,energy,
+sector  ,"land use, land-use change and forestry",
+sector  ,waste,
+econ_sector,agriculture,agricultural sector
+econ_sector,commercial,commercial sector
+econ_sector,industrial,industrial sector
+econ_sector,lulucf,"land use, land use change, and forestry sector"
+econ_sector,electric power,power sector
+econ_sector,residential,residential sector
+econ_sector,territories,U.S. territories (all sectors)
+econ_sector,transportation,transportation sector
+state,al,Alabama
+state,ak,Alaska
+state,az,Arizona
+state,ar,Arkansas
+state,ca,California
+state,co,Colorado
+state,ct,Connecticut
+state,de,Delaware
+state,dc,District of Columbia
+state,fl,Florida
+state,ga,Georgia
+state,hi,Hawaii
+state,id,Idaho
+state,il,Illinois
+state,in,Indiana
+state,ia,Iowa
+state,ks,Kansas
+state,ky,Kentucky
+state,la,Louisiana
+state,me,Maine
+state,md,Maryland
+state,ma,Massachusetts
+state,mi,Michigan
+state,mn,Minnesota
+state,ms,Mississippi
+state,mo,Missouri
+state,mt,Montana
+state,ne,Nebraska
+state,nv,Nevada
+state,nh,New Hampshire
+state,nj,New Jersey
+state,nm,New Mexico
+state,ny,New York
+state,nc,North Carolina
+state,nd,North Dakota
+state,oh,Ohio
+state,ok,Oklahoma
+state,or,Oregon
+state,pa,Pennsylvania
+state,ri,Rhode Island
+state,sc,South Carolina
+state,sd,South Dakota
+state,tn,Tennessee
+state,tx,Texas
+state,ut,Utah
+state,vt,Vermont
+state,va,Virginia
+state,wa,Washington
+state,wv,West Virginia
+state,wi,Wisconsin
+state,wy,Wyoming
+subcategory-1,acrylonitrile,
+subcategory-1,ag stationary,
+subcategory-1,alternative fuel highway,
+subcategory-1,american bison,
+subcategory-1,amount of ch4 flared,
+subcategory-1,amount of ch4 for energy recovery,
+subcategory-1,aviation,
+subcategory-1,beef cattle,
+subcategory-1,breweries,
+subcategory-1,by-product emissions,
+subcategory-1,calcium carbide production,
+subcategory-1,caprolactam,
+subcategory-1,carbon black,
+subcategory-1,cereals,
+subcategory-1,changes in forest carbon stocks,
+subcategory-1,changes in settlement carbon stocks,
+subcategory-1,co2 from methane flaring,
+subcategory-1,coastal wetlands remaining coastal wetlands,
+subcategory-1,commercial,
+subcategory-1,cropland,
+subcategory-1,cropland converted to forest land,
+subcategory-1,cropland converted to grassland,
+subcategory-1,cropland remaining cropland,
+subcategory-1,dairy cattle,
+subcategory-1,dairy heifers,
+subcategory-1,diesel highway,
+subcategory-1,dolomite,
+subcategory-1,effluent,
+subcategory-1,electric power,
+subcategory-1,electric power systems,
+subcategory-1,energy recovery,
+subcategory-1,equipment oem,
+subcategory-1,ethanol production,
+subcategory-1,ethylene,
+subcategory-1,ethylene dichloride,
+subcategory-1,ethylene oxide,
+subcategory-1,fire extinguishing,
+subcategory-1,flaring,
+subcategory-1,foams,
+subcategory-1,forest converted to cropland,
+subcategory-1,forest converted to grassland,
+subcategory-1,forest fires,
+subcategory-1,fruits and vegetables,
+subcategory-1,gasoline highway,
+subcategory-1,generation,
+subcategory-1,glyoxal,
+subcategory-1,glyoxylic acid,
+subcategory-1,goats,
+subcategory-1,grass fires,
+subcategory-1,grassland,
+subcategory-1,grassland converted to cropland,
+subcategory-1,grassland converted to forest land,
+subcategory-1,grassland remaining grassland,
+subcategory-1,harvested wood products,
+subcategory-1,heat transfer fluid,
+subcategory-1,horses,
+subcategory-1,hydrogen production,
+subcategory-1,industrial,
+subcategory-1,industrial oxidation,
+subcategory-1,industrial waste landfills emissions,
+subcategory-1,land converted to coastal wetlands,
+subcategory-1,landfilled yard trimmings and food scraps,
+subcategory-1,liberated,
+subcategory-1,limestone,
+subcategory-1,marine,
+subcategory-1,mdi aerosols,
+subcategory-1,medical applications,
+subcategory-1,metallurgical coke production,
+subcategory-1,methanol,
+subcategory-1,military applications,
+subcategory-1,mobile agricultural equipment,
+subcategory-1,mobile non-highway aircraft,
+subcategory-1,mobile non-highway construction,
+subcategory-1,mobile non-highway farm equipment,
+subcategory-1,mobile non-highway locomotives,
+subcategory-1,mobile non-highway other,
+subcategory-1,mobile non-highway ships and boats,
+subcategory-1,msw landfills generation emissions,
+subcategory-1,mules and asses,
+subcategory-1,n inputs,
+subcategory-1,non-highway,
+subcategory-1,non-mdi aerosols,
+subcategory-1,ods subst commercial,
+subcategory-1,ods subst industry,
+subcategory-1,ods subst residential,
+subcategory-1,ods subst transportation,
+subcategory-1,other,
+subcategory-1,other activities,
+subcategory-1,other annex,
+subcategory-1,other annex - subtraction,
+subcategory-1,other land converted to forest land,
+subcategory-1,other lands converted to cropland,
+subcategory-1,other lands converted to grassland,
+subcategory-1,peatlands,
+subcategory-1,pellet production,
+subcategory-1,petroleum refining,
+subcategory-1,pig iron production,
+subcategory-1,plants,
+subcategory-1,post-mining (surface),
+subcategory-1,post-mining (underground),
+subcategory-1,poultry,
+subcategory-1,process emissions,
+subcategory-1,propellant for pressure and aerosol products,
+subcategory-1,pulp and paper,
+subcategory-1,pulses,
+subcategory-1,recovered &used,
+subcategory-1,red meat and poultry,
+subcategory-1,refrigeration,
+subcategory-1,residential,
+subcategory-1,road highway vehicles,
+subcategory-1,scientific applications,
+subcategory-1,settlements converted to cropland,
+subcategory-1,settlements converted to forest land,
+subcategory-1,settlements converted to grassland,
+subcategory-1,settlement soils - n2o emissions,
+subcategory-1,sheep,
+subcategory-1,silicon carbide consumption,
+subcategory-1,silicon carbide production,
+subcategory-1,sinter production,
+subcategory-1,solvents,
+subcategory-1,steel production,
+subcategory-1,sugarcane,
+subcategory-1,surface mining,
+subcategory-1,swine,
+subcategory-1,transportation,
+subcategory-1,tubers and roots,
+subcategory-1,underground liberated,
+subcategory-1,underground recovered &used,
+subcategory-1,underground recovered &used for energy,
+subcategory-1,urban trees,
+subcategory-1,wetlands converted to cropland,
+subcategory-1,wetlands converted to forest land,
+subcategory-1,wetlands converted to grassland,
+subcategory-2,agricultural soil carbon stocks,
+subcategory-2,aquaculture in coastal wetlands,
+subcategory-2,awacs,
+subcategory-2,barley,
+subcategory-2,branches,
+subcategory-2,cotton,
+subcategory-2,cropland converted to vegetated,
+subcategory-2,direct,
+subcategory-2,direct n2o,
+subcategory-2,drained + drainage ditches,
+subcategory-2,food scraps,
+subcategory-2,forest land converted to vegetated,
+subcategory-2,grass,
+subcategory-2,grass hay,
+subcategory-2,grassland converted to vegetated,
+subcategory-2,hcfc-22 production,
+subcategory-2,indirect,
+subcategory-2,indirect n2o,
+subcategory-2,leaves,
+subcategory-2,legume hay,
+subcategory-2,maize,
+subcategory-2,military,
+subcategory-2,offsite,
+subcategory-2,onsite,
+subcategory-2,open converted to vegetated,
+subcategory-2,other land converted to vegetated,
+subcategory-2,other military applications,
+subcategory-2,other scientific applications,
+subcategory-2,particle accelerators,
+subcategory-2,products in use,
+subcategory-2,settlements converted to vegetated,
+subcategory-2,styrene,
+subcategory-2,sunflower,
+subcategory-2,swds,
+subcategory-2,tobacco,
+subcategory-2,vegetables,
+subcategory-2,vegetated converted to open,
+subcategory-2,vegetated remaining vegetated,
+subcategory-2,wheat,
+subcategory-2,woodland carbon stocks,
+subcategory-3,chickpeas,
+subcategory-3,dry beans,
+subcategory-3,lentils,
+subcategory-3,oats,
+subcategory-3,other small grains,
+subcategory-3,peanuts,
+subcategory-3,peas,
+subcategory-3,potatoes,
+subcategory-3,rice,
+subcategory-3,sorghum,
+subcategory-3,soybeans,
+subcategory-3,sugarbeets,
+subsector,enteric fermentation,
+subsector,field burning of agricultural residues,
+subsector,manure management,
+subsector,rice cultivation,
+subsector,fossil fuel combustion,
+subsector,incineration of waste,
+subsector,non-energy uses of fossil fuels,
+subsector,production and use of fluorinated gases,
+subsector,wastewater treatment and discharge,
+subsector,external source,
+subsector,electronics industry,
+subsector,fugitives,
+subsector,wetlands,
+subsector,other product manufacture and use,
+subsector,settlements,
+subsector,"co2 emissions from liming, urea application and other carbon-containing fertilizers",
+subsector,cropland,
+subsector,grassland,
+subsector,forest land,
+subsector,direct and indirect n2o emissions from agricultural soils,
+subsector,chemical industry,
+subsector,memo items,
+subsector,solid waste disposal,
+subsector,metal production,
+subsector,biological treatment of solid waste,
+subsector,metal industry,
+territory,as,American Samoa
+territory,gu,Guam
+territory,pr,Puerto Rico
+territory,um,US Pacific islands
+territory,vi,US Virgin Islands
+territory,wk,Wake Island
+unit,bbtu,"Btu, billions (bBtu)"
+unit,mbtu,"Btu, millions (mBtu)"
+unit,tbtu,"Btu, trillions (tBtu)"
+unit,mmt co2,"CO2-equivalent, metric tons, millions"
+unit,mmt,"metric tons, millions"
+unit,tg,teragrams
+econ_source ,co2 from fossil fuel Combustion,transportation sector
+econ_source ,mobile combustion,transportation sector
+econ_source ,non-energy use of fuels,transportation sector
+econ_source ,substitution of ozone depleting substances,transportation sector
+econ_source ,co2 from fossil fuel combustion,electric power sector
+econ_source ,electrical transmission and distribution,electric power sector
+econ_source ,incineration of waste,electric power sector
+econ_source ,other process uses of carbonates,electric power sector
+econ_source ,stationary combustion,electric power sector
+econ_source ,abandoned oil and gas wells,industrial sector
+econ_source ,abandoned underground coal mines,industrial sector
+econ_source ,adipic acid production,industrial sector
+econ_source ,aluminum production,industrial sector
+econ_source ,ammonia production,industrial sector
+econ_source ,"caprolactam, glyoxal, and glyoxylic acid production",industrial sector
+econ_source ,carbide production and consumption,industrial sector
+econ_source ,carbon dioxide consumption,industrial sector
+econ_source ,cement production,industrial sector
+econ_source ,co2 from fossil fuel combustion,industrial sector
+econ_source ,co2 from fossil fuel combustion,industrial sector
+econ_source ,coal mining,industrial sector
+econ_source ,electronics industry,industrial sector
+econ_source ,ferroalloy production,industrial sector
+econ_source ,glass production,industrial sector
+econ_source ,hcfc-22 production,industrial sector
+econ_source ,fluorochemical production including hcfc-22 production,industrial sector
+econ_source ,iron and steel production,industrial sector
+econ_source ,landfills - industrial,industrial sector
+econ_source ,lead production,industrial sector
+econ_source ,lime production,industrial sector
+econ_source ,magnesium production and processing,industrial sector
+econ_source ,mobile combustion,industrial sector
+econ_source ,n2o from product uses,industrial sector
+econ_source ,natural gas systems,industrial sector
+econ_source ,nitric acid production,industrial sector
+econ_source ,non-energy use of fuels,industrial sector
+econ_source ,other process uses of carbonates,industrial sector
+econ_source ,petrochemical production,industrial sector
+econ_source ,petroleum systems,industrial sector
+econ_source ,phosphoric acid production,industrial sector
+econ_source ,soda ash production,industrial sector
+econ_source ,stationary combustion,industrial sector
+econ_source ,stationary combustion,industrial sector
+econ_source ,substitution of ozone depleting substances,industrial sector
+econ_source ,sf6 and pfcs from other product uses,industrial sector
+econ_source ,titanium dioxide production,industrial sector
+econ_source ,urea consumption for non-agricultural purposes,industrial sector
+econ_source ,wastewater treatment,industrial sector
+econ_source ,zinc production,industrial sector
+econ_source ,co2 from fossil fuel combustion,agricultural sector
+econ_source ,enteric fermentation,agricultural sector
+econ_source ,field burning of agricultural residues,agricultural sector
+econ_source ,liming,agricultural sector
+econ_source ,manure management,agricultural sector
+econ_source ,mobile combustion,agricultural sector
+econ_source ,n2o from agricultural soil management,agricultural sector
+econ_source ,rice cultivation,agricultural sector
+econ_source ,stationary combustion,agricultural sector
+econ_source ,urea fertilization,agricultural sector
+econ_source ,anaerobic digestion at biogas facility,commercial sector
+econ_source ,co2 from fossil fuel combustion,commercial sector
+econ_source ,composting,commercial sector
+econ_source ,landfills - municipal,commercial sector
+econ_source ,stationary combustion,commercial sector
+econ_source ,substitution of ozone depleting substances,commercial sector
+econ_source ,wastewater treatment,commercial sector
+econ_source ,co2 from fossil fuel combustion,residential sector
+econ_source ,stationary combustion,residential sector
+econ_source ,substitution of ozone depleting substances,residential sector
+econ_source ,co2 from fossil fuel combustion,us territories sector
+econ_source ,non-energy use of fuels,us territories sector
+econ_source ,stationary combustion,us territories sector

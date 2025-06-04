@@ -1,0 +1,16 @@
+variable,variable_description,variable_type,aliases
+ghg,greenhouse gas,character,greenhousegas
+econ_sector,economic sector,character,econsector
+econ_source,individual source within each sector,character,econsource
+state,U.S. state (two-letter code),character,state
+territory,U.S. territory (two-letter code),character,territory
+unit,unit of measurement for the observation's value,character,unit
+value,"value being calculated, measured in unit",double,value
+year,four-digit year,factor,year
+subsector,,character,subsector
+sector ,,character,sector   
+category,,character,category
+subcategory_1,,character,subcategory-1
+subcategory_2,,character,subcategory-2
+subcategory_3,,character,subcategory-3
+carbon_pool,,character,carbonpool
