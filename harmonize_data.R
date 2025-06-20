@@ -11,68 +11,68 @@ ghgi_values <- read_csv("data/data_dictionary_values.csv")
 # FUNCTION, VER. II: READ INVDB DIM FILES---------------------------------
 
 # Creates one two-column df
-
-read_dim_files <- function(folderpath) {
-  
-  dim_files <- list.files(folderpath, 
-                          pattern = "\\.csv$",
-                          full.names = TRUE)
-  
-  dim_file_list <- map(dim_files, read_csv) %>% 
-    set_names(str_split_i(dim_files, "/", 3) %>% 
-                str_remove_all(c("_|dim|Dim|National ER|Values|.csv|PY25")) %>% 
-                str_squish())
-  
-  sectors <- left_join(dim_file_list$subsector,
-                       dim_file_list$sector, 
-                       by = "sector_id") %>%
-    left_join(dim_file_list$category, by = "subsector_id") %>%
-    select(-ends_with("_id")) %>%
-    pivot_longer(cols = everything(), values_to = "value", names_to = "value_variable") %>%
-    mutate(value_variable = str_extract(value_variable, pattern = "^[^_]+"), 
-           value_description = "")
-  
-  ghg <- dim_file_list$ghg %>%
-    select(value = ghg_code, value_description = ghg_longname) %>%
-    mutate(value_variable = "ghg")
-  
-  carbon_pool <- dim_file_list$carbonpool %>%
-    rename(value = carbon_pool) %>%
-    mutate(value_description = "", 
-           value_variable = "carbon_pool")
-  
-  subcats1 <- dim_file_list$subcategory1 %>% 
-    mutate(value_description = "category-1", 
-           value_variable = "subcategory") %>% 
-    rename(value = 1)
-  subcats2 <- dim_file_list$subcategory2 %>% 
-    mutate(value_description = "category-2", 
-           value_variable = "subcategory") %>% 
-    rename(value = 1)
-  subcats3 <- dim_file_list$subcategory3 %>% 
-    mutate(value_description = "category-3",
-           value_variable = "subcategory") %>% 
-    rename(value = 1)
-  
-  subcats <- bind_rows(subcats1, subcats2, subcats3)
-  
-  invdb <- lst(sectors, 
-               ghg, 
-               carbon_pool, 
-               subcats) %>%
-    map(\(x) mutate(x, 
-                    across(where(is.character), 
-                           ~str_to_lower(.)))) %>%
-    list_rbind()
-  
-  return(invdb)
-  
-}
-
-
-folderpath <- "data/InvDB Dim Values PY25 National ER"
-invdb <- read_dim_files(folderpath)
-
+# 
+# read_dim_files <- function(folderpath) {
+#   
+#   dim_files <- list.files(folderpath, 
+#                           pattern = "\\.csv$",
+#                           full.names = TRUE)
+#   
+#   dim_file_list <- map(dim_files, read_csv) %>% 
+#     set_names(str_split_i(dim_files, "/", 3) %>% 
+#                 str_remove_all(c("_|dim|Dim|National ER|Values|.csv|PY25")) %>% 
+#                 str_squish())
+#   
+#   sectors <- left_join(dim_file_list$subsector,
+#                        dim_file_list$sector, 
+#                        by = "sector_id") %>%
+#     left_join(dim_file_list$category, by = "subsector_id") %>%
+#     select(-ends_with("_id")) %>%
+#     pivot_longer(cols = everything(), values_to = "value", names_to = "value_variable") %>%
+#     mutate(value_variable = str_extract(value_variable, pattern = "^[^_]+"), 
+#            value_description = "")
+#   
+#   ghg <- dim_file_list$ghg %>%
+#     select(value = ghg_code, value_description = ghg_longname) %>%
+#     mutate(value_variable = "ghg")
+#   
+#   carbon_pool <- dim_file_list$carbonpool %>%
+#     rename(value = carbon_pool) %>%
+#     mutate(value_description = "", 
+#            value_variable = "carbon_pool")
+#   
+#   subcats1 <- dim_file_list$subcategory1 %>% 
+#     mutate(value_description = "category-1", 
+#            value_variable = "subcategory") %>% 
+#     rename(value = 1)
+#   subcats2 <- dim_file_list$subcategory2 %>% 
+#     mutate(value_description = "category-2", 
+#            value_variable = "subcategory") %>% 
+#     rename(value = 1)
+#   subcats3 <- dim_file_list$subcategory3 %>% 
+#     mutate(value_description = "category-3",
+#            value_variable = "subcategory") %>% 
+#     rename(value = 1)
+#   
+#   subcats <- bind_rows(subcats1, subcats2, subcats3)
+#   
+#   invdb <- lst(sectors, 
+#                ghg, 
+#                carbon_pool, 
+#                subcats) %>%
+#     map(\(x) mutate(x, 
+#                     across(where(is.character), 
+#                            ~str_to_lower(.)))) %>%
+#     list_rbind()
+#   
+#   return(invdb)
+#   
+# }
+# 
+# 
+# folderpath <- "data/InvDB Dim Values PY25 National ER"
+# invdb <- read_dim_files(folderpath)
+# 
 
 # FUNCTION: STANDARDIZE COLUMN NAMES-----------------------------
 
@@ -91,13 +91,14 @@ harmonize_variables <- function(data, ghgi_variables) {
                            TRUE,
                            FALSE))
   
-  possible_matches <- possible_matches %>%
-    mutate(suggestions = if_else(match == FALSE, map_chr(working_name, ~ghgi_variables %>% 
-                                   filter(stringdist(aliases, .x, method = "lcs") < 6) %>% 
-                                   pull(variable) %>% 
-                                   str_flatten_comma()), 
-                                 NA_character_)) %>% 
-    select(original_column_name, match, suggestions)
+  # Use stringdist to guess matches
+  # possible_matches <- possible_matches %>%
+  #   mutate(suggestions = if_else(match == FALSE, map_chr(working_name, ~ghgi_variables %>% 
+  #                                  filter(stringdist(aliases, .x, method = "lcs") < 6) %>% 
+  #                                  pull(variable) %>% 
+  #                                  str_flatten_comma()), 
+  #                                NA_character_)) %>% 
+  #   select(original_column_name, match, suggestions)
   
   return(possible_matches)
   
@@ -113,7 +114,7 @@ validate_values <- function(data, ghgi_values, ghgi_variables) {
     filter(value_variable %in% colnames(data)) %>%
     pivot_wider(names_from = value_variable, values_from = value)
   
-invalid_data <- data %>%
+invalid_data <- mydata %>%
   # Add a row number for id purposes when cross-referencing Excel sheets
   mutate(rownumber = row_number()) %>%
   mutate(across(matches(colnames(filtering_data)), 
@@ -177,7 +178,7 @@ convert_units <- function(data, unit1, unit2) {
 
 mydata <- tibble(
   Sector = c("industrial", "residential", "commercial"), 
-  'greenhouse gas' = c("CO_2", "CO_2", "CO_2"), 
+  'greenhouse gas' = c("CO_2", "Cxvdfvds_2", "CO_2"), 
   eValue = c(100, 200, 300), 
   US_State = c("MD", "VA", "NY")
 )
@@ -207,6 +208,12 @@ labelled::get_variable_labels(results)
 
 # DEMO: VALIDATE VALUES---------------------
 
+mydata <- tibble(
+  sector = c("industrial", "residential", "commercial"), 
+  'greenhouse gas' = c("CO_2", "Cxvdfvds_2", "CO_2"), 
+  value = c(100, 200, 300), 
+  state = c("MD", "VA", "NY")
+)
 
 validate_values(mydata, ghgi_values)
 # Alternative: a table with highlighted invalid values for visual review
