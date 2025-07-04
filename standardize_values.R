@@ -17,7 +17,7 @@ validate_values <- function(data, ghgi_values, ghgi_variables) {
     filter(value_variable %in% colnames(data)) %>%
     pivot_wider(names_from = value_variable, values_from = value)
   
-  invalid_data <- mydata %>%
+  invalid_data <- data %>%
     # Add a row number for id purposes when cross-referencing Excel sheets
     mutate(rownumber = row_number()) %>%
     mutate(across(matches(colnames(filtering_data)), 

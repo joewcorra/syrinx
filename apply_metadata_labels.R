@@ -11,18 +11,47 @@ ghgi_values <- read_csv("data/data_dictionary_values.csv")
 # FUNCTION: APPLY ATTRIBUTE LABELS-------------------------------
 
 # Function: add variable labels to dataframes 
-apply_variable_labels <- function(data, ghgi_variables) {
+apply_variable_labels <- function(data) {
   
-  # Filter the variables dataframe to get the variable labels
-  labels <- deframe(ghgi_variables %>%
-                      select(-variable_type) %>% 
-                      filter(variable %in%
-                               colnames(data))) %>%
-    as.list()
-  
-  # Apply the column labels
-  var_label(data) <- labels
+
   
   return(data)
   
+}
+
+apply_labels <- function(df, type = c("columns", "values")) {
+  
+  type <- match.arg(type)
+  
+  if (!is.data.frame(df)) {
+    stop("`df` must be a dataframe.")
+  }
+  
+  if (type == "columns") {
+    
+    # Filter the variables dataframe to get the variable labels
+    labels <- ghgi_variables %>%
+      dplyr::select(variable, variable_description) %>% 
+      dplyr::filter(variable %in%
+               names(df)) %>%
+      tibble::deframe() %>% 
+      as.list()
+    
+    # Apply the column labels
+    labelled_df <- labelled::set_variable_labels(df, .labels = labels)
+    
+    return(labelled_df)
+    
+  } else if (type == "values") {
+    
+    labels <- ghgi_values %>%
+      dplyr::select(value, value_description) %>% 
+      
+      tibble::deframe() %>% 
+      as.list()
+    
+    labelled_df <- labelled::set_value_labels(df, .labels = labels)
+    
+    return(labelled_df)
+  }
 }
