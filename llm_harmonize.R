@@ -31,3 +31,26 @@ submitted_vars <- c("carbon_dioxide", "carbon dioxide from FFC", "arizona",
                     "arkinsaw", "production of Zn", "hfc 236 cb", "ww discharge",
                     "crop_land_conv_forested", "burn ag residue", "wetl_rem_wetl", 
                     "NEU-FF")
+
+
+
+# Standardizing units and values of measurements----------------------------
+# Need to identify value & units columns, or create if they don't exist
+# Here's a way it might work:
+
+harmonize_measurements <- function(df) {
+  
+  
+  num_df <- df %>%
+    select(where(is.numeric))
+  
+  units_prompt <- paste0(
+    "Please look at these column names and identify that look like measurements of something. Please return your answer in tabular format only.", 
+    colnames(num_df))
+  
+  # Ask the model
+  response <- chat$chat(units_prompt)
+}
+
+y <- tibble(site = c("a", "b"), 'mmt co2' = 500:501, 'mmt ch4' = 101:102)
+harmonize_measurements(y)
