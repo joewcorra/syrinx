@@ -57,7 +57,7 @@ pre_clean <- function(df) {
   #                                  str_flatten_comma()), 
   #                                NA_character_)) %>% 
   #   select(original_column_name, match, suggestions)
-  
-  return(possible_matches)
-  
-}
+#   
+#   return(possible_matches)
+#   
+# }
