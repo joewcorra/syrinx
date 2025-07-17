@@ -34,7 +34,7 @@ data-harmonize/
 
 ## Dependencies
 
-`assertr`, `validate`, `tidyverse`, `ellmer`
+`tidyverse`, `ellmer`
 
 ## Contribution
 
