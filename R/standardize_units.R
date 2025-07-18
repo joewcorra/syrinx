@@ -1,3 +1,8 @@
+library(purrr)
+library(dplyr)
+library(ellmer)
+library(jsonlite)
+
 # FUNCTION: COVERT UNITS-------------------------------
 
 # Need to identify value & units columns, or create if they don't exist

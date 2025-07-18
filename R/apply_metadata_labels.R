@@ -1,7 +1,6 @@
 library(labelled)
 library(readr)
 library(dplyr)
-library(magrittr)
 library(tibble)
 
 # FUNCTION: READ DATA DICTIONARY---------------------------------
