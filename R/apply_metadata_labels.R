@@ -3,25 +3,24 @@ library(readr)
 library(dplyr)
 library(tibble)
 
-# FUNCTION: READ DATA DICTIONARY---------------------------------
-
-ghgi_variables <- read_csv("data/data_dictionary_variables.csv")
-
-ghgi_values <- read_csv("data/data_dictionary_values.csv")
-
 
 # FUNCTION: APPLY ATTRIBUTE LABELS-------------------------------
 
 # Function: add variable labels to dataframes
-apply_variable_labels <- function(data) {
-
-
-
-  return(data)
-
-}
-
 apply_labels <- function(df, type = c("columns", "values")) {
+
+  # Get data dictionary
+  vars_path <- system.file("data",
+                           "data_dictionary_variables.csv",
+                           package = "tanagerharmonize")
+  vals_path <- system.file("data",
+                           "data_dictionary_values.csv",
+                           package = "tanagerharmonize")
+
+  columns <- readr::read_csv(vars_path,
+                             show_col_types = FALSE)
+  values <- readr::read_csv(vals_path,
+                            show_col_types = FALSE)
 
   type <- match.arg(type)
 
@@ -32,7 +31,7 @@ apply_labels <- function(df, type = c("columns", "values")) {
   if (type == "columns") {
 
     # Filter the variables dataframe to get the variable labels
-    labels <- ghgi_variables %>%
+    labels <- columns %>%
       dplyr::select(variable, variable_description) %>%
       dplyr::filter(variable %in%
                names(df)) %>%
@@ -46,7 +45,7 @@ apply_labels <- function(df, type = c("columns", "values")) {
 
   } else if (type == "values") {
 
-    labels <- ghgi_values %>%
+    labels <- values %>%
       dplyr::select(value, value_description) %>%
 
       tibble::deframe() %>%

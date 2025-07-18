@@ -3,12 +3,6 @@ library(purrr)
 library(tidyr)
 library(readr)
 
-# FUNCTION: READ DATA DICTIONARY---------------------------------
-
-ghgi_variables <- read_csv("data/data_dictionary_variables.csv")
-
-ghgi_values <- read_csv("data/data_dictionary_values.csv")
-
 # FUNCTION: DATA VALIDATION--------------------------------------
 
 # For character data only
