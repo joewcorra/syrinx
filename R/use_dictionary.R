@@ -13,10 +13,10 @@ library(tidyr)
 use_dictionary <- function(df, type = c("columns", "values")) {
 
   # Get data dictionary
-  vars_path <- system.file("data",
+  vars_path <- system.file("extdata",
                            "data_dictionary_variables.csv",
                            package = "tanagerharmonize")
-  vals_path <- system.file("data",
+  vals_path <- system.file("extdata",
                            "data_dictionary_values.csv",
                            package = "tanagerharmonize")
 
