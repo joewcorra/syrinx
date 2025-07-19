@@ -3,6 +3,7 @@
 library(dplyr)
 library(tidyr)
 
+#' use_dictionary
 #' Compare a dataframe to the data dictionary
 #'
 #' @param df A dataframe to check.

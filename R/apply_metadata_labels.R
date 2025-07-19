@@ -3,7 +3,12 @@ library(readr)
 library(dplyr)
 library(tibble)
 
-
+#' apply_labels
+#'
+#' @param df A dataframe to check.
+#' @param type Either "columns" or "values". Determines what to label.
+#' @return A dataframe (depends on `type`).
+#' @export
 # FUNCTION: APPLY ATTRIBUTE LABELS-------------------------------
 
 # Function: add variable labels to dataframes

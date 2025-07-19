@@ -4,6 +4,15 @@ library(janitor)
 library(readr)
 library(forcats)
 
+
+#' pre_clean
+#'
+#' Pre cleans data
+#' @param ... describe params
+#' @return describe return
+#' @export
+
+
 pre_clean <- function(df) {
 
   cleaned_df <- janitor::clean_names(df) %>%

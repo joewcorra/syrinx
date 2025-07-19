@@ -4,6 +4,13 @@ library(dplyr)
 library(tibble)
 library(purrr)
 
+#' llm_dictionary
+#'
+#'
+#' @param df A dataframe to check.
+#' @param type Either "columns" or "values". Determines what kind of discrepancy to identify.
+#' @return A tibble or list of discrepancies (depends on `type`).
+#' @export
 
 # NEED TO RESTRICT "values" to a single column at a time...i think
 llm_dictionary <- function(df, type = c("columns", "values", api_key = NA)) {
