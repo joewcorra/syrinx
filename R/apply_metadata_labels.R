@@ -46,8 +46,8 @@ apply_labels <- function(df, type = c("columns", "values")) {
   } else if (type == "values") {
 
     labels <- values %>%
+      dplyr::filter(value_variable %in% names(df)) %>%
       dplyr::select(value, value_description) %>%
-
       tibble::deframe() %>%
       as.list()
 

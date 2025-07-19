@@ -13,17 +13,17 @@ library(tidyr)
 use_dictionary <- function(df, type = c("columns", "values")) {
 
   # Get data dictionary
-  vars_path <- system.file("extdata",
-                           "data_dictionary_variables.csv",
-                           package = "tanagerharmonize")
-  vals_path <- system.file("extdata",
-                           "data_dictionary_values.csv",
-                           package = "tanagerharmonize")
-
-  columns <- readr::read_csv(vars_path,
-                               show_col_types = FALSE)
-  values <- readr::read_csv(vals_path,
-                            show_col_types = FALSE)
+  # vars_path <- system.file("extdata",
+  #                          "data_dictionary_variables.csv",
+  #                          package = "tanagerharmonize")
+  # vals_path <- system.file("extdata",
+  #                          "data_dictionary_values.csv",
+  #                          package = "tanagerharmonize")
+  #
+  # columns <- readr::read_csv(vars_path,
+  #                              show_col_types = FALSE)
+  # values <- readr::read_csv(vals_path,
+  #                           show_col_types = FALSE)
 
 
   type <- match.arg(type)
@@ -34,13 +34,12 @@ use_dictionary <- function(df, type = c("columns", "values")) {
 
   if (type == "columns") {
     # Check column name discrepancies
-    dict_cols <- columns
-    df_cols <- names(df)
+    dict_cols <- columns$variable
 
     return(
       tibble::tibble(your_column = names(df)) %>%
-        dplyr::if_else(result = dplyr::case_when(
-          your_column %in% names(dict_cols) ~ "good",
+        dplyr::mutate(result = dplyr::case_when(
+          your_column %in% dict_cols ~ "good",
           .default = "column name not in dictionary",
         )
       )
@@ -48,9 +47,11 @@ use_dictionary <- function(df, type = c("columns", "values")) {
 
   } else if (type == "values") {
     # Check value discrepancies
-    dict_vals <- values
+    dict_vals <- values %>% dplyr::select(value_variable, value)
 
     discrepancies <- df %>%
+      dplyr::select(matches(values$value_variable)) %>%
+      dplyr::distinct() %>%
       tidyr::pivot_longer(cols = everything(),
                           names_to = "value_variable",
                           values_to = "value") %>%

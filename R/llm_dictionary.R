@@ -4,22 +4,22 @@ library(dplyr)
 library(tibble)
 library(purrr)
 
-# Get data dictionary
-vars_path <- system.file("data",
-                         "data_dictionary_variables.csv",
-                         package = "tanagerharmonize")
-vals_path <- system.file("data",
-                         "data_dictionary_values.csv",
-                         package = "tanagerharmonize")
-
-columns <- readr::read_csv(vars_path,
-                           show_col_types = FALSE)
-values <- readr::read_csv(vals_path,
-                          show_col_types = FALSE)
 
 # NEED TO RESTRICT "values" to a single column at a time...i think
 llm_dictionary <- function(df, type = c("columns", "values", api_key = NA)) {
 
+  # Get data dictionary
+  vars_path <- system.file("extdata",
+                           "data_dictionary_variables.csv",
+                           package = "tanagerharmonize")
+  vals_path <- system.file("extdata",
+                           "data_dictionary_values.csv",
+                           package = "tanagerharmonize")
+
+  columns <- readr::read_csv(vars_path,
+                             show_col_types = FALSE)
+  values <- readr::read_csv(vals_path,
+                            show_col_types = FALSE)
 
   type <- match.arg(type)
 
