@@ -3,8 +3,7 @@ library(stringr)
 library(janitor)
 library(readr)
 library(forcats)
-
-
+library(magrittr)
 #' pre_clean
 #'
 #' Pre cleans data
@@ -33,7 +32,7 @@ pre_clean <- function(df) {
     )
 
   # look for dupes and return (do not remove)
-  get_dupes(cleaned_df)
+  janitor::get_dupes(cleaned_df)
 
   return(cleaned_df)
 
