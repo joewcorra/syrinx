@@ -36,11 +36,11 @@ apply_labels <- function(df, type = c("columns", "values")) {
   if (type == "columns") {
 
     # Filter the variables dataframe to get the variable labels
-    labels <- columns %>%
-      dplyr::select(variable, variable_description) %>%
+    labels <- columns |>
+      dplyr::select(variable, variable_description) |>
       dplyr::filter(variable %in%
-               names(df)) %>%
-      tibble::deframe() %>%
+               names(df)) |>
+      tibble::deframe() |>
       as.list()
 
     # Apply the column labels
@@ -50,10 +50,10 @@ apply_labels <- function(df, type = c("columns", "values")) {
 
   } else if (type == "values") {
 
-    labels <- values %>%
-      dplyr::filter(value_variable %in% names(df)) %>%
-      dplyr::select(value, value_description) %>%
-      tibble::deframe() %>%
+    labels <- values |>
+      dplyr::filter(value_variable %in% names(df)) |>
+      dplyr::select(value, value_description) |>
+      tibble::deframe() |>
       as.list()
 
     labelled_df <- labelled::set_value_labels(df, .labels = labels)

@@ -35,7 +35,7 @@ llm_dictionary <- function(df, type = c("columns", "values", api_key = NA)) {
   }
 
   input_data = dplyr::if_else(type == "columns", names(df),
-                      purrr::keep(df, ~ is.character(.) || is.factor(.)) %>%
+                      purrr::keep(df, ~ is.character(.) || is.factor(.)) |>
                         tibble::deframe()
                       )
 
@@ -71,7 +71,7 @@ return(response)
 # harmonize_measurements <- function(df) {
 #
 #
-#   num_df <- df %>%
+#   num_df <- df |>
 #     select(where(is.numeric))
 #
 #   units_prompt <- paste0(
