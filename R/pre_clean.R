@@ -27,7 +27,11 @@ pre_clean <- function(df) {
                                   stringr::str_to_lower()),
                   # Convert 'year' (if present) to a factor
                   dplyr::across(dplyr::matches("year"),
-                                ~readr::parse_number(.) %>%
+                                # make year a character for parse_number()
+                                ~as.character(.) %>%
+                                  # Pull the year as a number
+                                  readr::parse_number() %>%
+                                  # Convert year to factor
                                   forcats::as_factor())
     )
 
