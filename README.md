@@ -7,9 +7,9 @@ This internal R package provides harmonization, cleaning, and QA/QC tools for st
 
 ## Key Features
 
-- Variable name and value harmonization
-- QA/QC checks (assertr, validate)
-- Metadata management using CSV dictionaries
+- Variable name and value harmonization with data dictionary
+- QA/QC checks
+- Metadata management and labeling using data dictionary
 - Optional LLM support for ambiguous mappings
 
 ## Installation
