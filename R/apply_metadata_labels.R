@@ -56,7 +56,8 @@ apply_labels <- function(df, type = c("columns", "values")) {
       tibble::deframe() |>
       as.list()
 
-    labelled_df <- labelled::set_value_labels(df, .labels = labels)
+    labelled_df <- labelled::set_value_labels(df, .labels = labels,
+                                              null_action = "empty")
 
     return(labelled_df)
   }
