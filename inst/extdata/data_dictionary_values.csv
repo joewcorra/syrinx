@@ -364,7 +364,7 @@ state,ca,California
 state,co,Colorado
 state,ct,Connecticut
 state,de,Delaware
-state,dc,District of Columbia
+state,dc,District of Columbia
 state,fl,Florida
 state,ga,Georgia
 state,hi,Hawaii
@@ -385,26 +385,26 @@ state,mo,Missouri
 state,mt,Montana
 state,ne,Nebraska
 state,nv,Nevada
-state,nh,New Hampshire
-state,nj,New Jersey
-state,nm,New Mexico
-state,ny,New York
-state,nc,North Carolina
-state,nd,North Dakota
+state,nh,New Hampshire
+state,nj,New Jersey
+state,nm,New Mexico
+state,ny,New York
+state,nc,North Carolina
+state,nd,North Dakota
 state,oh,Ohio
 state,ok,Oklahoma
 state,or,Oregon
 state,pa,Pennsylvania
-state,ri,Rhode Island
-state,sc,South Carolina
-state,sd,South Dakota
+state,ri,Rhode Island
+state,sc,South Carolina
+state,sd,South Dakota
 state,tn,Tennessee
 state,tx,Texas
 state,ut,Utah
 state,vt,Vermont
 state,va,Virginia
 state,wa,Washington
-state,wv,West Virginia
+state,wv,West Virginia
 state,wi,Wisconsin
 state,wy,Wyoming
 subcategory-1,acrylonitrile,
@@ -618,12 +618,12 @@ subsector,solid waste disposal,
 subsector,metal production,
 subsector,biological treatment of solid waste,
 subsector,metal industry,
-territory,as,American Samoa
+territory,as,American Samoa
 territory,gu,Guam
-territory,pr,Puerto Rico
-territory,um,US Pacific islands
-territory,vi,US Virgin Islands
-territory,wk,Wake Island
+territory,pr,Puerto Rico
+territory,um,US Pacific Islands
+territory,vi,US Virgin Islands
+territory,wk,Wake Island
 unit,bbtu,"Btu, billions (bBtu)"
 unit,mbtu,"Btu, millions (mBtu)"
 unit,tbtu,"Btu, trillions (tBtu)"
