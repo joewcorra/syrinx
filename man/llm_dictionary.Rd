@@ -2,18 +2,94 @@
 % Please edit documentation in R/llm_dictionary.R
 \name{llm_dictionary}
 \alias{llm_dictionary}
-\title{llm_dictionary}
+\title{Suggest dictionary-conformant names via an LLM}
 \usage{
-llm_dictionary(df, type = c("columns", "values", api_key = NA))
+llm_dictionary(df, type = c("columns", "values"), api_key = NA_character_)
 }
 \arguments{
-\item{df}{A dataframe to check.}
+\item{df}{A data frame (or tibble) containing user-submitted names/values to check.}
 
-\item{type}{Either "columns" or "values". Determines what kind of discrepancy to identify.}
+\item{type}{Either \code{"columns"} or \code{"values"} to select what the LLM
+should reconcile.}
+
+\item{api_key}{Optional character scalar. OpenAI API key to use with
+\code{ellmer::chat_openai()}. If \code{NULL} or \code{NA}, the function
+relies on \code{Sys.getenv("OPENAI_API_KEY")}.}
 }
 \value{
-A tibble or list of discrepancies (depends on \code{type}).
+The model response object returned by \pkg{ellmer} (typically a
+character string containing a plain-text table). No changes are made to \code{df}.
 }
 \description{
-llm_dictionary
+Uses a large language model (LLM) to map user-submitted column names or
+values in a data frame to the closest valid entries defined in the package's
+data dictionary. The function does not mutate \code{df}; it prepares the
+invalid items and asks the model to return a plain-text table of suggested
+matches.
 }
+\details{
+The function reads two CSVs shipped with the package (located in
+\code{inst/extdata} and accessed via \code{system.file()}):
+\itemize{
+\item \strong{data_dictionary_variables.csv}: must contain a column
+\code{variable} listing allowed column names.
+\item \strong{data_dictionary_values.csv}: must contain columns
+\code{value_variable} (the owning column) and \code{value} (the allowed value).
+}
+
+Behavior by \code{type}:
+\describe{
+\item{\code{"columns"}}{Builds a vector of \emph{invalid} column names
+(those not in \code{variable}) and asks the LLM to map each to the
+most likely allowed name.}
+\item{\code{"values"}}{Keeps only character/factor columns, reshapes to
+long format (\code{value_variable}, \code{value}), de-duplicates, and
+anti-joins against the allowed values to obtain the set of
+\emph{invalid} values. The LLM is asked to map each invalid value to
+the closest allowed value and return a three-column table:
+\code{submitted_value}, \code{matched_value}, and \code{value_variable}.}
+}
+
+\strong{Model call and output:} The function starts an \pkg{ellmer} chat via
+\code{ellmer::chat_openai()} (default model \code{"gpt-4.1"}) and sends a
+prompt instructing the model to return a plain-text table suitable for
+display in the R console. The return value is the model response as provided
+by \pkg{ellmer}.
+}
+\section{Security & configuration notes}{
+
+\itemize{
+\item Prefer supplying your OpenAI API key via the environment variable
+\code{OPENAI_API_KEY} (e.g., in \code{.Renviron}) rather than
+hard-coding. You may also pass \code{api_key} and forward it to
+\code{chat_openai(api_key = ...)}.
+\item Avoid embedding secrets in source control. Do not \code{Sys.setenv()}
+with live keys inside package code.
+\item For deterministic behavior and auditability, consider adding server-
+side validation and/or a manual review step downstream of the LLM suggestions.
+}
+}
+
+\examples{
+\dontrun{
+# Using an environment variable OPENAI_API_KEY is recommended.
+# Columns mode
+df <- tibble::tibble(Yeer = 2020, Sektor = "residential", value = 1)
+out_cols <- llm_dictionary(df, type = "columns")
+cat(out_cols)
+
+# Values mode
+df2 <- tibble::tibble(sector = c("residental", "industrial"), value = c(1, 2))
+out_vals <- llm_dictionary(df2, type = "values")
+cat(out_vals)
+}
+
+}
+\seealso{
+\code{\link[ellmer]{chat_openai}}, \code{\link[readr]{read_csv}},
+\code{\link[tidyr]{pivot_longer}}, \code{\link[dplyr]{anti_join}}
+}
+\keyword{data-cleaning}
+\keyword{dictionary}
+\keyword{llm}
+\keyword{validation}

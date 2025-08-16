@@ -64,18 +64,6 @@
 #' @importFrom tidyr pivot_longer
 #'
 #' @export
-
-library(dplyr)
-library(tidyr)
-
-#' use_dictionary
-#' Compare a dataframe to the data dictionary
-#'
-#' @param df A dataframe to check.
-#' @param type Either "columns" or "values". Determines what kind of discrepancy to identify.
-#' @return A tibble or list of discrepancies (depends on `type`).
-#' @export
-
 use_dictionary <- function(df, type = c("columns", "values")) {
 
   # Get data dictionary

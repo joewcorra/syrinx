@@ -2,18 +2,48 @@
 % Please edit documentation in R/apply_metadata_labels.R
 \name{apply_labels}
 \alias{apply_labels}
-\title{apply_labels}
+\title{Apply variable (column) labels from the data dictionary}
 \usage{
-apply_labels(df, type = c("columns", "values"))
+apply_labels(df)
 }
 \arguments{
-\item{df}{A dataframe to check.}
-
-\item{type}{Either "columns" or "values". Determines what to label.}
+\item{df}{A data frame or tibble whose columns should receive labels.}
 }
 \value{
-A dataframe (depends on \code{type}).
+The input data frame with variable label attributes applied to any
+columns found in the dictionary.
 }
 \description{
-apply_labels
+Adds human-readable variable labels to the columns of a data frame using the
+package's data dictionary, without modifying data values or column names.
 }
+\details{
+This function reads \code{inst/extdata/data_dictionary_variables.csv}
+(accessed via \code{system.file()}) and expects at least the columns:
+\itemize{
+\item \code{variable}: the canonical column name in \code{df}
+\item \code{variable_description}: the label to apply
+}
+Only variables present in \code{df} are labeled. Labels are stored as
+variable attributes via \code{labelled::set_variable_labels()} and are
+compatible with packages that respect the \code{label} attribute.
+
+\emph{Future extension:} Commented code shows a pattern for value labels
+(via \code{labelled::set_value_labels()}) using a
+\code{data_dictionary_values.csv} with fields like
+\code{value_variable}, \code{value}, and \code{value_description}.
+}
+\examples{
+# Suppose the dictionary maps variable = "sector" to "Economic sector"
+df <- tibble::tibble(sector = c("residential", "commercial"), value = 1:2)
+out <- apply_labels(df)
+# View a label (if your IDE prints attributes) or use:
+attr(out$sector, "label")
+
+}
+\seealso{
+\code{\link[labelled]{set_variable_labels}}, \code{\link[readr]{read_csv}}
+}
+\keyword{documentation}
+\keyword{labelling}
+\keyword{metadata}

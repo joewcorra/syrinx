@@ -84,18 +84,8 @@
 #' @importFrom ellmer chat_openai
 #'
 #' @export
-
-library(ellmer)
-library(jsonlite)
-library(dplyr)
-library(tibble)
-library(purrr)
-library(tidyr)
-
-
-
 # NEED TO RESTRICT "values" to a single column at a time, perhaps
-llm_dictionary <- function(df, type = c("columns", "values"), api_key = NA) {
+llm_dictionary <- function(df, type = c("columns", "values"), api_key = NA_character_) {
 
   # Get data dictionary
   vars_path <- system.file("extdata",
@@ -135,7 +125,7 @@ llm_dictionary <- function(df, type = c("columns", "values"), api_key = NA) {
 
 
 # Enter API Key
-Sys.setenv(OPENAI_API_KEY = "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")
+Sys.setenv(OPENAI_API_KEY = api_key)
 # Start a chat with ChatGPT
 chat <- chat_openai(
   api_key = Sys.getenv("OPENAI_API_KEY")

@@ -41,12 +41,6 @@
 #' @importFrom labelled set_variable_labels
 #'
 #' @export
-
-library(labelled)
-library(readr)
-library(dplyr)
-library(tibble)
-
 apply_labels <- function(df
                          # ,
                          # type = c("columns", "values")

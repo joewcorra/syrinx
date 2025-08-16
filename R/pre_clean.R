@@ -46,14 +46,6 @@
 #' @importFrom forcats as_factor
 #'
 #' @export
-
-library(dplyr)
-library(stringr)
-library(janitor)
-library(readr)
-library(forcats)
-library(magrittr)
-
 pre_clean <- function(df) {
 
   cleaned_df <- janitor::clean_names(df) |>
