@@ -1,7 +1,5 @@
-# tanager-data-harmonize
-Data harmonization and cleaning package for the Tanager data system. 
-
-# Data Harmonize
+# syrinx
+Data harmonization and cleaning package for greenhouse gas emissions inventories.
 
 This internal R package provides harmonization, cleaning, and QA/QC tools for standardizing incoming data. It includes metadata dictionaries and leverages large language models via the `ellmer` package to support variable alignment and validation.
 
@@ -16,12 +14,12 @@ This internal R package provides harmonization, cleaning, and QA/QC tools for st
 
 ```r
 # From local development
-devtools::load_all("path/to/data-harmonize")
+devtools::load_all("path/to/syrinx")
 ```
 
 ## Repository Structure
 
-data-harmonize/
+syrinx/
 ├── R/
 │   ├── harmonize.R
 │   ├── metadata_helpers.R
