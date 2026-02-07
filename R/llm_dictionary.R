@@ -1,160 +1,131 @@
-#' Suggest dictionary-conformant names via an LLM
-#'
-#' Uses a large language model (LLM) to map user-submitted column names or
-#' values in a data frame to the closest valid entries defined in the package's
-#' data dictionary. The function does not mutate \code{df}; it prepares the
-#' invalid items and asks the model to return a plain-text table of suggested
-#' matches.
-#'
-#' @details
-#' The function reads two CSVs shipped with the package (located in
-#' \code{inst/extdata} and accessed via \code{system.file()}):
-#' \itemize{
-#'   \item \strong{data_dictionary_variables.csv}: must contain a column
-#'     \code{variable} listing allowed column names.
-#'   \item \strong{data_dictionary_values.csv}: must contain columns
-#'     \code{value_variable} (the owning column) and \code{value} (the allowed value).
-#' }
-#'
-#' Behavior by \code{type}:
-#' \describe{
-#'   \item{\code{"columns"}}{Builds a vector of \emph{invalid} column names
-#'         (those not in \code{variable}) and asks the LLM to map each to the
-#'         most likely allowed name.}
-#'   \item{\code{"values"}}{Keeps only character/factor columns, reshapes to
-#'         long format (\code{value_variable}, \code{value}), de-duplicates, and
-#'         anti-joins against the allowed values to obtain the set of
-#'         \emph{invalid} values. The LLM is asked to map each invalid value to
-#'         the closest allowed value and return a three-column table:
-#'         \code{submitted_value}, \code{matched_value}, and \code{value_variable}.}
-#' }
-#'
-#' \strong{Model call and output:} The function starts an \pkg{ellmer} chat via
-#' \code{ellmer::chat_openai()} (default model \code{"gpt-4.1"}) and sends a
-#' prompt instructing the model to return a plain-text table suitable for
-#' display in the R console. The return value is the model response as provided
-#' by \pkg{ellmer}.
-#'
-#' @section Security & configuration notes:
-#' \itemize{
-#'   \item Prefer supplying your OpenAI API key via the environment variable
-#'         \code{OPENAI_API_KEY} (e.g., in \code{.Renviron}) rather than
-#'         hard-coding. You may also pass \code{api_key} and forward it to
-#'         \code{chat_openai(api_key = ...)}.
-#'   \item Avoid embedding secrets in source control. Do not \code{Sys.setenv()}
-#'         with live keys inside package code.
-#'   \item For deterministic behavior and auditability, consider adding server-
-#'         side validation and/or a manual review step downstream of the LLM suggestions.
-#' }
-#'
-#' @param df A data frame (or tibble) containing user-submitted names/values to check.
-#' @param type Either \code{"columns"} or \code{"values"} to select what the LLM
-#'   should reconcile.
-#' @param api_key Optional character scalar. OpenAI API key to use with
-#'   \code{ellmer::chat_openai()}. If \code{NULL} or \code{NA}, the function
-#'   relies on \code{Sys.getenv("OPENAI_API_KEY")}.
-#'
-#' @return The model response object returned by \pkg{ellmer} (typically a
-#'   character string containing a plain-text table). No changes are made to \code{df}.
-#'
-#' @examples
-#' \dontrun{
-#' # Using an environment variable OPENAI_API_KEY is recommended.
-#' # Columns mode
-#' df <- tibble::tibble(Yeer = 2020, Sektor = "residential", value = 1)
-#' out_cols <- llm_dictionary(df, type = "columns")
-#' cat(out_cols)
-#'
-#' # Values mode
-#' df2 <- tibble::tibble(sector = c("residental", "industrial"), value = c(1, 2))
-#' out_vals <- llm_dictionary(df2, type = "values")
-#' cat(out_vals)
-#' }
-#'
-#' @seealso \code{\link[ellmer]{chat_openai}}, \code{\link[readr]{read_csv}},
-#'   \code{\link[tidyr]{pivot_longer}}, \code{\link[dplyr]{anti_join}}
-#'
-#' @keywords data-cleaning validation dictionary llm
-#'
-#' @importFrom readr read_csv
-#' @importFrom tibble as_tibble
-#' @importFrom purrr keep
-#' @importFrom dplyr select distinct anti_join
-#' @importFrom tidyr pivot_longer
-#' @importFrom ellmer chat_openai
-#'
-#' @export
-# NEED TO RESTRICT "values" to a single column at a time, perhaps
-llm_dictionary <- function(df, type = c("columns", "values"), api_key = NA_character_) {
+llm_dictionary <- function(discrepancies,
+                           model = "claude-haiku-4-5-20251001",
+                           credentials = NULL) {
+
+  # Input validation
+  if (!is.data.frame(discrepancies)) {
+    stop("discrepancies must be a dataframe.")
+  }
+
+  required_cols <- c("column", "value", "issue_type")
+  if (!all(required_cols %in% names(discrepancies))) {
+    stop("discrepancies must contain columns: column, value, issue_type")
+  }
+
+  # Filter to only value issues
+  value_issues <- discrepancies |>
+    dplyr::filter(issue_type == "value_not_in_dictionary", !is.na(value))
+
+  if (nrow(value_issues) == 0) {
+    message("No value discrepancies to process.")
+    return(tibble::tibble(
+      column = character(),
+      original_value = character(),
+      suggested_value = character(),
+      confidence = numeric(),
+      reasoning = character()
+    ))
+  }
 
   # Get data dictionary
-  vars_path <- system.file("extdata",
-                           "data_dictionary_variables.csv",
-                           package = "tanagerharmonize")
   vals_path <- system.file("extdata",
                            "data_dictionary_values.csv",
-                           package = "tanagerharmonize")
+                           package = "syrinx")
+  dict_values <- readr::read_csv(vals_path, show_col_types = FALSE)
 
-  columns <- readr::read_csv(vars_path,
-                             show_col_types = FALSE)
-  values <- readr::read_csv(vals_path,
-                            show_col_types = FALSE)
-
-  type <- match.arg(type)
-
-  if (!is.data.frame(df)) {
-    stop("`df` must be a dataframe.")
+  # Handle credentials - convert to function if needed
+  if (!is.null(credentials)) {
+    if (is.character(credentials)) {
+      # If user passes a string, wrap it in a function
+      api_key <- credentials
+      credentials <- function() api_key
+    }
   }
 
-  if (type == "columns") {
-    # Keep only invalid column mames
-    input_data <- names(df)[!names(df) %in% columns$variable] |>
-      tibble::as_tibble()
+  # Create chat object
+  chat <- ellmer::chat_anthropic(
+    model = model,
+    credentials = credentials,
+    system_prompt = "You are a data standardization assistant. Return ONLY valid JSON matching the requested schema, with no additional text or markdown formatting."
+  )
 
-  } else if (type == "values") {
-    # if values, keep only invalid values that are char data
-    # NOTE: the assumption here is that user has already fixed the COLUMN NAMES
-    input_data <- purrr::keep(df, ~ is.character(.) || is.factor(.)) |>
-      tidyr::pivot_longer(cols = everything(),
-                          names_to = "value_variable",
-                          values_to = "value") |>
-      dplyr::distinct() |>
-      dplyr::anti_join(values |>
-                         select(-value_description))
+  # Process each column separately
+  results_list <- list()
+
+  columns_to_process <- unique(value_issues$column)
+
+  for (col in columns_to_process) {
+    # Get invalid values for this column
+    invalid_vals <- value_issues |>
+      dplyr::filter(column == col) |>
+      dplyr::pull(value) |>
+      unique()
+
+    # Get valid values from dictionary
+    valid_vals <- dict_values |>
+      dplyr::filter(value_variable == col) |>
+      dplyr::pull(value)
+
+    if (length(valid_vals) == 0) {
+      warning(paste0("Column '", col, "' has no valid values in dictionary. Skipping."))
+      next
+    }
+
+    # Create prompt requesting JSON output
+    prompt <- paste0(
+      "For the column '", col, "', suggest corrections for these invalid values:\n",
+      paste(invalid_vals, collapse = ", "), "\n\n",
+      "Valid values are:\n",
+      paste(valid_vals, collapse = ", "), "\n\n",
+      "Return ONLY a JSON object (no markdown, no code blocks) with this exact structure:\n",
+      '{"suggestions": [{"original_value": "...", "suggested_value": "...", "confidence": 0.95, "reasoning": "..."}]}\n\n',
+      "For each invalid value, suggest the most appropriate valid value with a confidence score (0-1) and reasoning."
+    )
+
+    # Call LLM
+    response <- chat$chat(prompt)
+
+    # Parse JSON response
+    tryCatch({
+      # Clean the response - remove markdown code blocks if present
+      response_text <- as.character(response)
+      response_text <- stringr::str_replace_all(response_text, "```json\\s*", "")
+      response_text <- stringr::str_replace_all(response_text, "```\\s*", "")
+      response_text <- stringr::str_trim(response_text)
+
+      # Parse JSON
+      parsed <- jsonlite::fromJSON(response_text)
+      suggestions <- parsed$suggestions
+
+      # Convert to dataframe and add column name
+      if (nrow(suggestions) > 0) {
+        col_results <- tibble::tibble(
+          column = col,
+          original_value = suggestions$original_value,
+          suggested_value = suggestions$suggested_value,
+          confidence = suggestions$confidence,
+          reasoning = suggestions$reasoning
+        )
+        results_list[[col]] <- col_results
+      }
+    }, error = function(e) {
+      warning(paste0("Failed to parse response for column '", col, "': ", e$message))
+      warning(paste0("Raw response was: ", substr(response_text, 1, 200)))
+    })
   }
 
+  # Combine all results
+  if (length(results_list) == 0) {
+    return(tibble::tibble(
+      column = character(),
+      original_value = character(),
+      suggested_value = character(),
+      confidence = numeric(),
+      reasoning = character()
+    ))
+  }
 
-# Enter API Key
-Sys.setenv(OPENAI_API_KEY = api_key)
-# Start a chat with ChatGPT
-chat <- chat_openai(
-  api_key = Sys.getenv("OPENAI_API_KEY")
-)
+  final_results <- dplyr::bind_rows(results_list)
 
-# Start a chat with ChatGPT
-chat <- chat_openai(model = "gpt-4.1", api_key = Sys.getenv("OPENAI_API_KEY"))
-
-
-# Construct a prompt
-if (type == "columns") {
-prompt <- paste0(
-  "Match each of the following submitted column names to the most likely column name from this master list.  Please provide your answers as a plan text table (viewable in the R console) with two columns: submitted_column_name and matched_column_name. Do not output any explanations, only the table.",
-  paste(dplyr::select(columns, variable), collapse = ", "),
-  ".\n\nSubmitted column names:\n",
-  paste(input_data, collapse = "\n")
-)
-
-} else if (type == "values") {
-  prompt <- paste0(
-    "Match each of the following submitted values in the 'value' column to the most likely value from this master list. Please provide your answers as a plan text table (viewable in the R console) with three columns: submitted_value, matched_value, and value_variable. Do not output any explanations, only the table.",
-    paste(dplyr::select(values, value_variable:value), collapse = ", "),
-    ".\n\nSubmitted values:\n",
-    paste(input_data, collapse = "\n"))
-}
-
-# Ask the model
-response <- chat$chat(prompt)
-
-return(response)
-
+  return(final_results)
 }
