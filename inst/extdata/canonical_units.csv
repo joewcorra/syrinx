@@ -1,0 +1,33 @@
+unit_raw,unit_canonical,conversion_factor,quantity_type,notes
+short_tons,metric_tons,0.907185,mass,1 short ton = 0.907185 metric tons
+long_tons,metric_tons,1.016047,mass,1 long ton = 1.016047 metric tons
+pounds,metric_tons,4.53592e-4,mass,1 lb = 0.000453592 metric tons
+kilograms,metric_tons,0.001,mass,1 kg = 0.001 metric tons
+grams,metric_tons,1e-6,mass,1 g = 1e-6 metric tons
+gigagrams,metric_tons,1000,mass,1 Gg = 1000 metric tons
+thousand_short_tons,metric_tons,907.185,mass,1000 short tons = 907.185 metric tons
+million_short_tons,metric_tons,907185,mass,1e6 short tons = 907185 metric tons
+mmbtu,tbtu,1e-6,energy,1 MMBtu = 1e-6 TBtu
+billion_btu,tbtu,0.001,energy,1 BBtu = 0.001 TBtu
+trillion_btu,tbtu,1,energy,canonical; no conversion
+quadrillion_btu,tbtu,1000000,energy,1 quad = 1e6 TBtu
+mwh,tbtu,3.41214e-9,energy,1 MWh = 3.41214e-9 TBtu
+gwh,tbtu,3.41214e-6,energy,1 GWh = 3.41214e-6 TBtu
+twh,tbtu,3.41214,energy,1 TWh = 3.41214 TBtu
+joules,tbtu,9.47817e-16,energy,1 J = 9.47817e-16 TBtu
+gigajoules,tbtu,9.47817e-7,energy,1 GJ = 9.47817e-7 TBtu
+petajoules,tbtu,0.947817,energy,1 PJ = 0.947817 TBtu
+thousand_barrels,barrels,1000,volume,1 kbbl = 1000 bbl
+million_barrels,barrels,1000000,volume,1 Mbbl = 1e6 bbl
+thousand_gallons,gallons,1000,volume,1 kgal = 1000 gal
+million_gallons,gallons,1000000,volume,1 Mgal = 1e6 gal
+cubic_feet,cubic_meters,0.0283168,volume,1 ft3 = 0.0283168 m3
+billion_cubic_feet,cubic_meters,28316846.6,volume,1 Bcf = 28316846.6 m3
+trillion_cubic_feet,cubic_meters,28316800000,volume,1 Tcf = 2.83168e10 m3
+thousand_acres,acres,1000,area,1 kac = 1000 ac
+million_acres,acres,1000000,area,1 Mac = 1e6 ac
+hectares,acres,2.47105,area,1 ha = 2.47105 ac
+thousand_hectares,acres,2471.05,area,1 kha = 2471.05 ac
+square_kilometers,acres,247.105,area,1 km2 = 247.105 ac
+thousand_head,head,1000,count,1 khead = 1000 head
+million_head,head,1000000,count,1 Mhead = 1e6 head
