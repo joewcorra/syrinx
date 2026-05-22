@@ -1,3 +1,39 @@
+#' Suggest corrections for data-dictionary discrepancies using an LLM
+#'
+#' Takes the output of \code{\link{use_dictionary}} and, for each column with
+#' value discrepancies, asks a Claude model to suggest the closest valid value
+#' from the dictionary. Returns a tidy table of suggestions that can be
+#' reviewed before applying corrections.
+#'
+#' @param discrepancies A data frame produced by \code{\link{use_dictionary}},
+#'   containing columns \code{column}, \code{value}, and \code{issue_type}.
+#'   Only rows where \code{issue_type == "value_not_in_dictionary"} are
+#'   processed.
+#' @param model Character string giving the Claude model ID to use. Defaults
+#'   to \code{"claude-haiku-4-5-20251001"}.
+#' @param credentials Optional API key as a character string, or a
+#'   zero-argument function returning one. If \code{NULL}, the
+#'   \code{ANTHROPIC_API_KEY} environment variable is used.
+#'
+#' @return A tibble with one row per suggested correction and columns
+#'   \code{column}, \code{original_value}, \code{suggested_value},
+#'   \code{confidence} (0–1), and \code{reasoning}. Returns an empty tibble
+#'   if there are no value discrepancies to process.
+#'
+#' @examples
+#' # issues <- use_dictionary(my_df)
+#' # suggestions <- llm_dictionary(issues)
+#'
+#' @seealso \code{\link{use_dictionary}}
+#'
+#' @importFrom dplyr filter pull bind_rows
+#' @importFrom ellmer chat_anthropic
+#' @importFrom readr read_csv
+#' @importFrom stringr str_replace_all str_trim
+#' @importFrom jsonlite fromJSON
+#' @importFrom tibble tibble
+#'
+#' @export
 llm_dictionary <- function(discrepancies,
                            model = "claude-haiku-4-5-20251001",
                            credentials = NULL) {

@@ -1,12 +1,26 @@
 Package: syrinx
 Title: Data Harmonization Tools for Internal Use
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: A set of functions to harmonize and standardize datasets used
-    by the team.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Authors@R:
+    person("Joe", "Corra", , "corra.joseph@gmail.com", role = c("aut", "cre"))
+Description: A set of functions to harmonize and standardize datasets for
+    greenhouse gas emissions inventories. Includes data dictionary validation,
+    LLM-assisted value correction, unit conversion to canonical units, and
+    metadata labeling.
+License: Apache License (>= 2)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Imports:
+    dplyr,
+    ellmer,
+    forcats,
+    janitor,
+    jsonlite,
+    labelled,
+    purrr,
+    readr,
+    rlang,
+    stringr,
+    tibble,
+    tidyr

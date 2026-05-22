@@ -49,7 +49,7 @@ apply_labels <- function(df
   # Get data dictionary
   vars_path <- system.file("extdata",
                            "data_dictionary_variables.csv",
-                           package = "tanagerharmonize")
+                           package = "syrinx")
   # vals_path <- system.file("extdata",
   #                          "data_dictionary_values.csv",
   #                          package = "tanagerharmonize")

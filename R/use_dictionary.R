@@ -1,4 +1,32 @@
 
+#' Validate a data frame against the syrinx data dictionary
+#'
+#' Checks column names against \code{data_dictionary_variables.csv} and, for
+#' columns that have value rules, checks every distinct value against
+#' \code{data_dictionary_values.csv}. Returns a tidy table of discrepancies
+#' that can be passed directly to \code{\link{llm_dictionary}} for
+#' LLM-assisted correction.
+#'
+#' @param df A data frame or tibble to validate.
+#'
+#' @return A tibble with columns \code{column}, \code{value}, and
+#'   \code{issue_type}. Each row is one discrepancy; \code{issue_type} is
+#'   either \code{"column_not_in_dictionary"} or
+#'   \code{"value_not_in_dictionary"}. Returns zero rows if no issues are
+#'   found.
+#'
+#' @examples
+#' # issues <- use_dictionary(my_df)
+#' # if (nrow(issues) > 0) llm_dictionary(issues)
+#'
+#' @seealso \code{\link{llm_dictionary}}
+#'
+#' @importFrom readr read_csv
+#' @importFrom dplyr select filter mutate case_when all_of anti_join distinct bind_rows
+#' @importFrom tidyr pivot_longer
+#' @importFrom tibble tibble
+#'
+#' @export
 use_dictionary <- function(df) {
   # Get data dictionary
   vars_path <- system.file("extdata",
