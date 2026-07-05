@@ -7,7 +7,9 @@
 llm_dictionary(
   discrepancies,
   model = "claude-haiku-4-5-20251001",
-  credentials = NULL
+  credentials = NULL,
+  dictionary_values = system.file("extdata", "data_dictionary_values.csv", package =
+    "syrinx")
 )
 }
 \arguments{
@@ -22,6 +24,13 @@ to \code{"claude-haiku-4-5-20251001"}.}
 \item{credentials}{Optional API key as a character string, or a
 zero-argument function returning one. If \code{NULL}, the
 \code{ANTHROPIC_API_KEY} environment variable is used.}
+
+\item{dictionary_values}{Path to a CSV file giving the valid values to
+suggest corrections from. Must contain \code{value_variable} (the column
+the rule applies to) and \code{value} (an allowed value) columns.
+Defaults to the package's built-in \code{data_dictionary_values.csv}.
+This must be supplied (it cannot be \code{NULL}) since it is the
+reference the LLM uses to suggest corrections.}
 }
 \value{
 A tibble with one row per suggested correction and columns

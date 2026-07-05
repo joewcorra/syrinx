@@ -14,6 +14,12 @@
 #' @param credentials Optional API key as a character string, or a
 #'   zero-argument function returning one. If \code{NULL}, the
 #'   \code{ANTHROPIC_API_KEY} environment variable is used.
+#' @param dictionary_values Path to a CSV file giving the valid values to
+#'   suggest corrections from. Must contain \code{value_variable} (the column
+#'   the rule applies to) and \code{value} (an allowed value) columns.
+#'   Defaults to the package's built-in \code{data_dictionary_values.csv}.
+#'   This must be supplied (it cannot be \code{NULL}) since it is the
+#'   reference the LLM uses to suggest corrections.
 #'
 #' @return A tibble with one row per suggested correction and columns
 #'   \code{column}, \code{original_value}, \code{suggested_value},
@@ -36,11 +42,18 @@
 #' @export
 llm_dictionary <- function(discrepancies,
                            model = "claude-haiku-4-5-20251001",
-                           credentials = NULL) {
+                           credentials = NULL,
+                           dictionary_values = system.file("extdata",
+                                                           "data_dictionary_values.csv",
+                                                           package = "syrinx")) {
 
   # Input validation
   if (!is.data.frame(discrepancies)) {
     stop("discrepancies must be a dataframe.")
+  }
+
+  if (is.null(dictionary_values)) {
+    stop("dictionary_values must be supplied: llm_dictionary needs a values dictionary to look up valid values for suggesting corrections.")
   }
 
   required_cols <- c("column", "value", "issue_type")
@@ -64,10 +77,11 @@ llm_dictionary <- function(discrepancies,
   }
 
   # Get data dictionary
-  vals_path <- system.file("extdata",
-                           "data_dictionary_values.csv",
-                           package = "syrinx")
-  dict_values <- readr::read_csv(vals_path, show_col_types = FALSE)
+  dict_values <- readr::read_csv(dictionary_values, show_col_types = FALSE)
+
+  if (!all(c("value_variable", "value") %in% names(dict_values))) {
+    stop("dictionary_values must contain 'value_variable' and 'value' columns.")
+  }
 
   # Handle credentials - convert to function if needed
   if (!is.null(credentials)) {

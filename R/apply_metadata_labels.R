@@ -1,11 +1,11 @@
-#' Apply variable (column) labels from the data dictionary
+#' Apply variable (column) labels from a data dictionary
 #'
-#' Adds human-readable variable labels to the columns of a data frame using the
-#' package's data dictionary, without modifying data values or column names.
+#' Adds human-readable variable labels to the columns of a data frame using a
+#' data dictionary, without modifying data values or column names.
 #'
 #' @details
-#' This function reads \code{inst/extdata/data_dictionary_variables.csv}
-#' (accessed via \code{system.file()}) and expects at least the columns:
+#' This function reads a variables dictionary CSV and expects at least the
+#' columns:
 #' \itemize{
 #'   \item \code{variable}: the canonical column name in \code{df}
 #'   \item \code{variable_description}: the label to apply
@@ -20,6 +20,10 @@
 #' \code{value_variable}, \code{value}, and \code{value_description}.
 #'
 #' @param df A data frame or tibble whose columns should receive labels.
+#' @param dictionary_variables Path to a CSV file used to label columns. Must
+#'   contain \code{variable} and \code{variable_description} columns.
+#'   Defaults to the package's built-in \code{data_dictionary_variables.csv}.
+#'   Pass \code{NULL} to skip labelling and return \code{df} unchanged.
 #'
 #' @return The input data frame with variable label attributes applied to any
 #'   columns found in the dictionary.
@@ -31,6 +35,9 @@
 #' # View a label (if your IDE prints attributes) or use:
 #' attr(out$sector, "label")
 #'
+#' # Using a custom dictionary:
+#' # out <- apply_labels(df, dictionary_variables = "my_vars.csv")
+#'
 #' @seealso \code{\link[labelled]{set_variable_labels}}, \code{\link[readr]{read_csv}}
 #'
 #' @keywords metadata labelling documentation
@@ -41,29 +48,37 @@
 #' @importFrom labelled set_variable_labels
 #'
 #' @export
-apply_labels <- function(df
+apply_labels <- function(df,
+                         dictionary_variables = system.file("extdata",
+                                                            "data_dictionary_variables.csv",
+                                                            package = "syrinx")
                          # ,
                          # type = c("columns", "values")
                          ) {
 
+  if (!is.data.frame(df)) {
+    stop("df must be a dataframe.")
+  }
+
+  if (is.null(dictionary_variables)) {
+    message("No dictionary_variables supplied; returning df without labels.")
+    return(df)
+  }
+
   # Get data dictionary
-  vars_path <- system.file("extdata",
-                           "data_dictionary_variables.csv",
-                           package = "syrinx")
+  columns <- readr::read_csv(dictionary_variables,
+                             show_col_types = FALSE)
   # vals_path <- system.file("extdata",
   #                          "data_dictionary_values.csv",
   #                          package = "tanagerharmonize")
-
-  columns <- readr::read_csv(vars_path,
-                             show_col_types = FALSE)
   # values <- readr::read_csv(vals_path,
   #                           show_col_types = FALSE)
 
+  if (!all(c("variable", "variable_description") %in% names(columns))) {
+    stop("dictionary_variables must contain 'variable' and 'variable_description' columns.")
+  }
+
   # type <- match.arg(type)
-#
-#   if (!is.data.frame(df)) {
-#     stop("`df` must be a dataframe.")
-#   }
 #
 #   if (type == "columns") {
 
@@ -90,7 +105,5 @@ apply_labels <- function(df
   #
   #   labelled_df <- labelled::set_value_labels(df, .labels = labels,
   #                                             null_action = "empty")
-
-    return(labelled_df)
   # }
 }

@@ -2,12 +2,30 @@
 % Please edit documentation in R/use_dictionary.R
 \name{use_dictionary}
 \alias{use_dictionary}
-\title{Validate a data frame against the syrinx data dictionary}
+\title{Validate a data frame against a data dictionary}
 \usage{
-use_dictionary(df)
+use_dictionary(
+  df,
+  dictionary_variables = system.file("extdata", "data_dictionary_variables.csv", package
+    = "syrinx"),
+  dictionary_values = system.file("extdata", "data_dictionary_values.csv", package =
+    "syrinx")
+)
 }
 \arguments{
 \item{df}{A data frame or tibble to validate.}
+
+\item{dictionary_variables}{Path to a CSV file used to validate column
+names. Must contain a \code{variable} column listing the allowed column
+names. Defaults to the package's built-in
+\code{data_dictionary_variables.csv}. Pass \code{NULL} to skip the
+column-name check entirely.}
+
+\item{dictionary_values}{Path to a CSV file used to validate cell values.
+Must contain \code{value_variable} (the column the rule applies to) and
+\code{value} (an allowed value) columns. Defaults to the package's
+built-in \code{data_dictionary_values.csv}. Pass \code{NULL} to skip the
+value check entirely.}
 }
 \value{
 A tibble with columns \code{column}, \code{value}, and
@@ -17,15 +35,26 @@ either \code{"column_not_in_dictionary"} or
 found.
 }
 \description{
-Checks column names against \code{data_dictionary_variables.csv} and, for
-columns that have value rules, checks every distinct value against
-\code{data_dictionary_values.csv}. Returns a tidy table of discrepancies
-that can be passed directly to \code{\link{llm_dictionary}} for
-LLM-assisted correction.
+Checks column names against a variables dictionary and, for columns that
+have value rules, checks every distinct value against a values dictionary.
+Returns a tidy table of discrepancies that can be passed directly to
+\code{\link{llm_dictionary}} for LLM-assisted correction.
+}
+\details{
+By default, both checks run against the package's built-in GHG inventory
+data dictionaries. Either dictionary can be swapped out for a custom CSV,
+and either check can be skipped entirely by passing \code{NULL} for the
+corresponding argument.
 }
 \examples{
 # issues <- use_dictionary(my_df)
 # if (nrow(issues) > 0) llm_dictionary(issues)
+
+# Using a custom dictionary, checking only column names:
+# issues <- use_dictionary(my_df,
+#   dictionary_variables = "my_vars.csv",
+#   dictionary_values = NULL
+# )
 
 }
 \seealso{

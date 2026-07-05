@@ -2,24 +2,33 @@
 % Please edit documentation in R/apply_metadata_labels.R
 \name{apply_labels}
 \alias{apply_labels}
-\title{Apply variable (column) labels from the data dictionary}
+\title{Apply variable (column) labels from a data dictionary}
 \usage{
-apply_labels(df)
+apply_labels(
+  df,
+  dictionary_variables = system.file("extdata", "data_dictionary_variables.csv", package
+    = "syrinx")
+)
 }
 \arguments{
 \item{df}{A data frame or tibble whose columns should receive labels.}
+
+\item{dictionary_variables}{Path to a CSV file used to label columns. Must
+contain \code{variable} and \code{variable_description} columns.
+Defaults to the package's built-in \code{data_dictionary_variables.csv}.
+Pass \code{NULL} to skip labelling and return \code{df} unchanged.}
 }
 \value{
 The input data frame with variable label attributes applied to any
 columns found in the dictionary.
 }
 \description{
-Adds human-readable variable labels to the columns of a data frame using the
-package's data dictionary, without modifying data values or column names.
+Adds human-readable variable labels to the columns of a data frame using a
+data dictionary, without modifying data values or column names.
 }
 \details{
-This function reads \code{inst/extdata/data_dictionary_variables.csv}
-(accessed via \code{system.file()}) and expects at least the columns:
+This function reads a variables dictionary CSV and expects at least the
+columns:
 \itemize{
 \item \code{variable}: the canonical column name in \code{df}
 \item \code{variable_description}: the label to apply
@@ -39,6 +48,9 @@ df <- tibble::tibble(sector = c("residential", "commercial"), value = 1:2)
 out <- apply_labels(df)
 # View a label (if your IDE prints attributes) or use:
 attr(out$sector, "label")
+
+# Using a custom dictionary:
+# out <- apply_labels(df, dictionary_variables = "my_vars.csv")
 
 }
 \seealso{
