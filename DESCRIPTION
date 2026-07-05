@@ -1,6 +1,6 @@
 Package: syrinx
 Title: Data Harmonization Tools for Internal Use
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R:
     person("Joe", "Corra", , "corra.joseph@gmail.com", role = c("aut", "cre"))
 Description: A set of functions to harmonize and standardize datasets for
